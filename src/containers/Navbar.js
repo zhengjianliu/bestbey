@@ -1,13 +1,35 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import SlidePanel from './SlidePanel'
+import Account from './Account'
 
-class Navbar extends React.Component {
+class NavBar extends React.Component {
+  state={
+    clickCart: false,
+    clicking: ""
+  }
+
+  clickHandler= () =>{
+    this.setState({clickCart: !this.state.clickCart, clicking:"cart"})
+  }
+  accountClickHandler= () =>{
+    this.setState({clickCart: !this.state.clickCart, clicking:"account"})
+  }
 
     render(){
-        return(
+      return(
+        <div>
+          <div id="navbar-item">
+            <Link to="/"><h3>Navbar</h3></Link>
             <div>
-                <h2>Navbar.js</h2>
+              <h2 onClick={this.clickHandler}>Cart</h2>
+              <h2 onClick={this.accountClickHandler}>Account</h2>
             </div>
-        )
+          </div>
+          <div id="navbar"></div>
+          <SlidePanel clickCart={this.state.clickCart} clicking={this.state.clicking}/>
+        </div>
+      )
     }
 }
-export default Navbar
+export default NavBar
