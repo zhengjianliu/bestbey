@@ -10,8 +10,7 @@ class App extends React.Component {
 
   state = {
     products: [],
-    clicked: false,
-    clickCart:false
+    user:[]
   }
 
   componentDidMount() {
@@ -21,16 +20,14 @@ class App extends React.Component {
     .catch(e => console.error(e))
   }
 
-  clickHandler = () =>{
-    this.setState({clicked: !this.state.clicked})
-  }
+
 
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar/>
-          <Route exact path="/" render={() =><Home products={this.state.products} clicked={this.state.clicked} clickHandler={this.clickHandler}/>}/>
+          <Route exact path="/" render={() =><Home products={this.state.products}/>}/>
           <Route path="/showpage" render={() =><Showpage />}/>
         </div>
       </Router>
