@@ -116,8 +116,25 @@ button{
 }
 
 #slidepanel.active{
-  opacity: 0.8;
+  opacity: 1;
   transform: translateX(0px) scale(1) rotateY(0deg);
+}
+
+
+.cartcontainer{
+  height: 70px;
+  width: 90%;
+  margin-left: 5%;
+  border-bottom: 3px solid black;
+  padding-bottom: 20px;
+}
+
+
+
+.cartcontainer img{
+  float:left;
+  height: 70px;
+  width: 70px;
 }
 
 #logoutbutton{

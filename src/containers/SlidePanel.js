@@ -3,9 +3,12 @@ import React from 'react'
 class SlidePanel extends React.Component {
   renderCart = () =>{
     return this.props.cart.map(item =>
-      <div>
-        <h1> option: {item.option}</h1>
-        <h1> quantity: {item.quantity}</h1>
+      <div className="cartcontainer">
+        <img src={item.frontimg}/>
+        <div>
+          <h3>{item.sku.name.toUpperCase()}</h3>
+          <h3> Quantity: {item.quantity}</h3>
+        </div>
       </div>
     )
   }
