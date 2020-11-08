@@ -22,7 +22,6 @@ class NavBar extends React.Component {
   }
 
     render(){
-      console.log(this.state.popup)
       return(
         <div>
           <div id="navbar-item">
@@ -34,7 +33,7 @@ class NavBar extends React.Component {
             </div>
           </div>
           <div id="navbar"></div>
-          <SlidePanel clickCart={this.state.clickCart} clicking={this.state.clicking}/>
+          <SlidePanel cart={this.props.cart} products ={this.props.products} clickCart={this.state.clickCart} clicking={this.state.clicking}/>
           <Login popup={this.state.popup} popupClickHandler={this.popupClickHandler}/>
         </div>
       )

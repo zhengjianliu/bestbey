@@ -24,6 +24,7 @@ class Login extends Component{
             <br/>
             <input value={this.state.password} name="password" type="password" placeholder="password" onChange={this.handleChange}></input>
             <button type="submit">Login</button>
+            <button type="submit">Signup</button>
           </form>
           <button className="closebutton" onClick={this.props.popupClickHandler}>X</button>
         </div>

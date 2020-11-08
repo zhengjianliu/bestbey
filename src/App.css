@@ -35,7 +35,7 @@ button{
 
 
 #secondpage{
-  background:rgb(69, 172, 222);
+  background:white;
   position: absolute;
   margin-top: 60px;
   width: 100%;
@@ -49,6 +49,22 @@ button{
 #secondpage.slidetoright{
   transform: translateX(0%) scaleX(1);
   opacity: 1;
+}
+
+.leftsidepenl{
+  margin-top: 3%;
+  margin-left: 3%;
+  float: left;
+}
+
+.leftsidepenl img{
+  max-width: 100%;
+}
+
+.rightsidepanel{
+  float: right;
+  margin-left: 30px;
+  width: 55%;
 }
 
 
@@ -183,18 +199,54 @@ button{
   top: 35vh;
   z-index: 100000;
   opacity: 0;
-  transform: scale(0) translateY(700px) rotateX(120deg);
-  transition: 0.65s;
+  animation: close .3s forwards;
+}
+
+@keyframes close {
+  0%{
+    transform: scale(1);
+    opacity: 1;
+  }
+  80%{
+    transform: scale(.8);
+    opacity:0;
+  }
+  100%{
+    transform: scale(0);
+    opacity:0;
+  }
 }
 
 #loginContainer.active{
-  transform: scale(1) translateY(0px) rotateX(0deg);
-  opacity: 1;
+  animation: open .7s forwards;
+}
+
+@keyframes open {
+  0%{
+    transform: scale(0);
+    opacity: 0;
+  }
+  55%{
+    transform: scale(1.05);
+     opacity:1;
+  }
+  70%{
+    transform: scale(0.99);
+    opacity:.9;
+  }
+  90%{
+    transform: scale(1.01);
+    opacity:1;
+  }
+  100%{
+    transform: scale(1);
+    opacity:1;
+  }
 }
 
 #loginContainer div{
   width: 420px;
-  height: 280px;
+  height: 310px;;
   background: white;
   box-shadow: -10px 10px 20px 10px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
