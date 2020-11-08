@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import CardDeck  from 'react-bootstrap/CardDeck'
+import DetailPage from './DetailPage'
 
 class Home extends React.Component {
   state={
@@ -18,9 +19,7 @@ class Home extends React.Component {
   }
 
   render() {
-    let {id, name, colors, rating, category, frontimg, sideimg, backimg, price, storage, ram, size, brand, additional_specs } = this.state.show
     let options = this.state.show
-    console.log(options)
     return (
       <section>
 
@@ -29,11 +28,7 @@ class Home extends React.Component {
         </div>
 
         <div id="secondpage" className={this.state.clicked?"slidetoright":null}>
-
-          <h2>{name} | {brand}</h2>
-          <img src={frontimg}/>
-          <p>{additional_specs}</p>
-          <button className="closebutton"onClick={this.clickHandler}>{"<"}</button>
+          {this.state.show.length==0 ? null: <DetailPage cartChangeHandler={this.props.cartChangeHandler} product={this.state.show} clickHandler={this.clickHandler}/>}
         </div>
 
       </section>

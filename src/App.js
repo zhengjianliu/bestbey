@@ -10,7 +10,8 @@ class App extends React.Component {
 
   state = {
     products: [],
-    user:[]
+    user:[],
+    cart:[]
   }
 
   componentDidMount() {
@@ -20,14 +21,19 @@ class App extends React.Component {
     .catch(e => console.error(e))
   }
 
+  cartChangeHandler = product =>{
+    this.setState({cart:[...this.state.cart, product]})
+  }
+
 
 
   render() {
+    console.log("Here is the cart:",this.state.cart)
     return (
       <Router>
         <div className="App">
-          <NavBar/>
-          <Route exact path="/" render={() =><Home products={this.state.products}/>}/>
+          <NavBar cart={this.state.cart} products={this.state.products}/>
+          <Route exact path="/" render={() =><Home products={this.state.products} cartChangeHandler={this.cartChangeHandler}/>}/>
           <Route path="/showpage" render={() =><Showpage />}/>
         </div>
       </Router>
