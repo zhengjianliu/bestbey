@@ -13,6 +13,7 @@ class App extends React.Component {
     products: [],
     user:[],
     cart:[],
+    currentOrder: [],
     searchterm:""
   }
 
@@ -71,8 +72,26 @@ class App extends React.Component {
   //   }
   // }
 
+  getOrderSkus = () => {
+    return this.state.cart.map( cartItem => cartItem.sku)
+  }
+
   orderHandler = (cart) =>{
-    console.log(cart, this.state.user.id)
+    // console.log(cart, this.state.user.id)
+    let options = {
+      method: "POST",
+      headers: {
+        "content-type":"application/json",
+        "accept":"application/json"
+      },
+      body: JSON.stringify({
+        skus: this.getOrderSkus(),
+        user_id: this.state.user.id
+      })
+    }
+    fetch("http://localhost:3000/orders", options)
+    .then(response => response.json())
+    .then(data => this.setState({currentOrder: data}))
   }
 
   render() {
