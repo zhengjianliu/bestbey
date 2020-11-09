@@ -415,10 +415,17 @@ select{
   width: 80%;
   margin-left: 10%;
 }
+
 table{
   width: 80%;
   margin-left: 20px;
 }
+
+table + button{
+  width: 300px;
+  margin-bottom: 20vh;
+}
+
 td{
   width: 33.33%;
   padding-top: 20px;
@@ -430,8 +437,12 @@ table tr td img{
 }
 
 
+/*acccount container*/
 
-
+.accountcontainer{
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 /*mobile view section*/
 @media (max-width: 1800px){

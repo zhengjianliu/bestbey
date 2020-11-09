@@ -9,7 +9,7 @@ class NavBar extends React.Component {
   state={
     clickCart: false,
     clicking: "",
-    popup: false
+    popup: false,
   }
 
   clickHandler= () =>{
@@ -22,6 +22,12 @@ class NavBar extends React.Component {
     this.setState({popup: !this.state.popup})
   }
 
+  logoutClickHandler = () =>{
+    this.setState({clickCart: !this.state.clickCart, clicking:""})
+    this.props.logoutHandler()
+  }
+
+
     render(){
       return(
         <div>
@@ -29,13 +35,25 @@ class NavBar extends React.Component {
             <Link to="/"><h3>Navbar</h3></Link>
             <div>
               <Search searchHandler={this.props.searchHandler} searchterm={this.props.searchterm}/>
-              <h2 onClick={this.popupClickHandler}>Login</h2>
-              <h2 onClick={this.clickHandler}>Cart</h2>
-              <h2 onClick={this.accountClickHandler}>Account</h2>
+              {this.props.user.id === undefined?
+                <h2 onClick={this.popupClickHandler}>Login</h2>
+              :
+                <>
+                <h2 onClick={this.clickHandler}>Cart</h2>
+                <h2 onClick={this.accountClickHandler}>Account</h2>
+                </>
+              }
+
             </div>
           </div>
           <div id="navbar"></div>
-          <SlidePanel cart={this.props.cart} products ={this.props.products} clickCart={this.state.clickCart} clicking={this.state.clicking}/>
+          <SlidePanel
+            cart={this.props.cart}
+            products ={this.props.products}
+            clickCart={this.state.clickCart}
+            clicking={this.state.clicking}
+            user={this.props.user}
+            logoutClickHandler={this.logoutClickHandler}/>
           <Login
             popup={this.state.popup}
             popupClickHandler={this.popupClickHandler}
