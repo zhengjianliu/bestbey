@@ -1,7 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
-import CardDeck  from 'react-bootstrap/CardDeck'
+// import CardDeck  from 'react-bootstrap/CardDeck'
 import DetailPage from './DetailPage'
 
 class Home extends React.Component {
@@ -28,7 +28,7 @@ class Home extends React.Component {
         </div>
 
         <div id="secondpage" className={this.state.clicked?"slidetoright":null}>
-          {this.state.show.length==0 ? null: <DetailPage cartChangeHandler={this.props.cartChangeHandler} product={this.state.show} clickHandler={this.clickHandler}/>}
+          {this.state.show.length === 0 ? null: <DetailPage cartChangeHandler={this.props.cartChangeHandler} product={this.state.show} clickHandler={this.clickHandler}/>}
         </div>
 
       </section>

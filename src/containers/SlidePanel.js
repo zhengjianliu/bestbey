@@ -13,7 +13,10 @@ class SlidePanel extends React.Component {
   renderCart = () =>{
     return this.props.cart.map(item =>
       <div className="cartcontainer">
-        <img src={item.frontimg}/>
+        <img 
+          alt={item.name}
+          src={item.frontimg}
+        />
         <div>
           <h6>{item.sku.name.toUpperCase()}</h6>
           <h5> Quantity: {item.quantity}</h5>
@@ -30,7 +33,7 @@ class SlidePanel extends React.Component {
         <div style={{marginTop:"60px"}}>
           <h2>Shopping Cart</h2>
           {this.renderCart()}
-          {this.getTotalAmount() == 0? null:<button id="logoutbutton">Checkout<br/>Total: ${this.getTotalAmount()}</button>}
+          {this.getTotalAmount() === 0? null:<button id="logoutbutton">Checkout<br/>Total: ${this.getTotalAmount()}</button>}
         </div>
       )
 
