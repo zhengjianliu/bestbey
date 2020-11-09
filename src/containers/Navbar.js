@@ -27,7 +27,6 @@ class NavBar extends React.Component {
     this.props.logoutHandler()
   }
 
-
     render(){
       return(
         <div>
@@ -37,18 +36,18 @@ class NavBar extends React.Component {
               <Search searchHandler={this.props.searchHandler} searchterm={this.props.searchterm}/>
               {this.props.user.id === undefined?
                 <h2 onClick={this.popupClickHandler}>Login</h2>
-              :
+                :
                 <>
-                <h2 onClick={this.clickHandler}>Cart</h2>
-                <h2 onClick={this.accountClickHandler}>Account</h2>
+                  <h2 onClick={this.clickHandler}>Cart</h2>
+                  <h2 onClick={this.accountClickHandler}>Account</h2>
                 </>
               }
-
             </div>
           </div>
           <div id="navbar"></div>
           <SlidePanel
             cart={this.props.cart}
+            removeFromCartHandler={this.props.removeFromCartHandler}
             products ={this.props.products}
             clickCart={this.state.clickCart}
             clicking={this.state.clicking}

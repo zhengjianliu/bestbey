@@ -51,6 +51,14 @@ class App extends React.Component {
     this.setState({cart:[...this.state.cart, product]})
   }
 
+  removeFromCartHandler = (skuId) => {
+    console.log(skuId)
+    let remainingCartItems = this.state.cart.filter( item => item.sku.id !== skuId)
+    this.setState({
+      cart: remainingCartItems
+    })
+  }
+
   searchHandler = e =>{
     this.setState({searchterm: e.target.value})
   }
@@ -81,7 +89,6 @@ class App extends React.Component {
   }
 
   orderHandler = (cart) =>{
-    // console.log(cart, this.state.user.id)
     let options = {
       method: "POST",
       headers: {
@@ -99,12 +106,12 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.getOrderSkus())
     return (
       <Router>
         <div className="App">
           <NavBar
             cart={this.state.cart}
+            removeFromCartHandler={this.removeFromCartHandler}
             products={this.state.products}
             searchHandler={this.searchHandler}
             searchterm={this.state.searchterm}
@@ -114,7 +121,13 @@ class App extends React.Component {
             />
           <Route exact path="/" render={() =>
             <Home products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>
-            <Route path="/checkout" render={() =><CheckoutPage appState={this.state} orderHandler={this.orderHandler}/>}/>
+            <Route path="/checkout" render={() =>
+              <CheckoutPage 
+                appState={this.state} 
+                orderHandler={this.orderHandler}
+                removeFromCartHandler={this.removeFromCartHandler}
+                />}
+              />
             <Route path="confirmation" render={() =><ConfirmationPage />}/>
         </div>
       </Router>
