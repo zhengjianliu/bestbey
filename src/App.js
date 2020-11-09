@@ -3,8 +3,7 @@ import './App.css';
 import Home from './containers/Home'
 import NavBar from './containers/NavBar';
 import Showpage from './containers/Showpage'
-import SlidePanel from './containers/SlidePanel';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -23,7 +22,7 @@ class App extends React.Component {
   }
 
   filteredContent = () =>{
-    if (this.state.searchterm == ""){
+    if (this.state.searchterm === ""){
       return this.state.products
     }else{
       return this.state.products.filter(product=>product.name.toUpperCase().includes(this.state.searchterm.toUpperCase()) || product.brand.toUpperCase().includes(this.state.searchterm.toUpperCase()))
@@ -38,8 +37,24 @@ class App extends React.Component {
     this.setState({searchterm: e.target.value})
   }
 
+  // filteredCart = () =>{
+  //   let newCart = []
+  //   if(this.state.cart.length >= 2){
+  //       let i = 0
+  //       let currentItem = this.state.cart[i].sku.name
+  //       let nextItem = this.state.cart[i+1].sku.name
+  //       console.log(currentItem)
+  //       console.log(nextItem)
+  //
+  //       if( currentItem=== nextItem){
+  //         newCart = this.state.cart.splice(1,1)
+  //         console.log(newCart)
+  //       }
+  //
+  //   }
+  // }
   render() {
-    console.log("Here is the cart:",this.state.cart)
+    console.log("Here is the cart:", this.state.cart)
     return (
       <Router>
         <div className="App">
