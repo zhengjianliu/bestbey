@@ -13,6 +13,28 @@ body {
   text-align: center;
 }
 
+.hrline{
+  width: 60%;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  border: 1px solid lightgrey;
+}
+
+.searchbar{
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 20px;
+  border: 2px solid grey;
+  background: white;
+  width: 200px;
+  padding-top: 3px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding-left: 10px;
+  font-size: 12pt;
+}
+
+
 button{
   cursor: pointer;
 }
@@ -25,7 +47,7 @@ button{
   height: 200vh;
   opacity: 1;
   z-index: 10;
-  transition: .7s;
+  transition: 0.5s;
 }
 
 #homepage.slidetoleft{
@@ -43,7 +65,7 @@ button{
   z-index: 0;
   opacity: 0;
   transform: translateX(100%) scaleX(0);
-  transition: .7s;
+  transition: 0.5s;
 }
 
 #secondpage.slidetoright{
@@ -67,6 +89,14 @@ button{
   width: 55%;
 }
 
+select{
+  border:none;
+  width: 100px;
+  font-size: 12pt;
+  font-weight: 600;
+  margin-left: 20px;
+  border-bottom: 2px solid black;
+}
 
 #navbar{
   top: 0;
@@ -129,13 +159,13 @@ button{
   padding-bottom: 20px;
 }
 
-
-
 .cartcontainer img{
   float:left;
-  height: 70px;
-  width: 70px;
+  height: 80px;
+  width: 90px;
+  margin-right: 10px;
 }
+
 
 #logoutbutton{
   bottom:0;
@@ -161,6 +191,7 @@ button{
 }
 
 .productcard{
+  cursor: pointer;
   float: left;
   width: 25%;
   height: auto;
@@ -180,9 +211,10 @@ button{
   float: left;
   width:  200px;
   height: 200px;
-  cursor: pointer;
+  margin: 10px;
   object-fit: cover;
 }
+
 
 
 .productcard p{
@@ -204,7 +236,16 @@ button{
 
 .addbutton{
   margin-top: 10px;
+  font-size: 22px;
+  padding: 10px 20px;
+  border-radius: 50px;
   background-color: rgb(19, 191, 10);
+  transition: .5s;
+}
+
+.addbutton:hover{
+  transform: scale(1.02);
+  letter-spacing: 2px;
 }
 
 #loginContainer{

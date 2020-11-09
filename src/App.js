@@ -11,7 +11,8 @@ class App extends React.Component {
   state = {
     products: [],
     user:[],
-    cart:[]
+    cart:[],
+    searchterm:""
   }
 
   componentDidMount() {
@@ -21,19 +22,29 @@ class App extends React.Component {
     .catch(e => console.error(e))
   }
 
+  filteredContent = () =>{
+    if (this.state.searchterm == ""){
+      return this.state.products
+    }else{
+      return this.state.products.filter(product=>product.name.toUpperCase().includes(this.state.searchterm.toUpperCase()) || product.brand.toUpperCase().includes(this.state.searchterm.toUpperCase()))
+    }
+  }
+
   cartChangeHandler = product =>{
     this.setState({cart:[...this.state.cart, product]})
   }
 
-
+  searchHandler = e =>{
+    this.setState({searchterm: e.target.value})
+  }
 
   render() {
     console.log("Here is the cart:",this.state.cart)
     return (
       <Router>
         <div className="App">
-          <NavBar cart={this.state.cart} products={this.state.products}/>
-          <Route exact path="/" render={() =><Home products={this.state.products} cartChangeHandler={this.cartChangeHandler}/>}/>
+          <NavBar cart={this.state.cart} products={this.state.products} searchHandler={this.searchHandler} searchterm={this.state.searchterm}/>
+          <Route exact path="/" render={() =><Home products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>
           <Route path="/showpage" render={() =><Showpage />}/>
         </div>
       </Router>

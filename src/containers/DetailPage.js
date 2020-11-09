@@ -22,7 +22,8 @@ export default class DetailPage extends React.Component{
           />
         </div>
         <div className="rightsidepanel">
-        <h2>{this.props.product.name} | {this.props.product.brand}</h2>
+        <h2>{this.props.product.name.toUpperCase()} | {this.props.product.brand.toUpperCase()}</h2>
+        <hr className="hrline"/>
         <h3>Options</h3>
         <form>
           <b>{this.props.product.product_options[0].name.toUpperCase()}:</b>
@@ -30,10 +31,9 @@ export default class DetailPage extends React.Component{
             {this.renderOptions()}
           </select>
         </form>
-        <p>{this.props.product.additional_specs}</p>
+        <p style={{textAlign:"left",padding:"20px", paddingRight:"30px"}}>{this.props.product.additional_specs}</p>
         <h1>Price: ${this.state.sku.price}</h1>
-        <hr/>
-        <button onClick={()=>this.props.cartChangeHandler(this.state)}>Add to Cart</button>
+        <button className="cardbuttons addbutton" onClick={()=>this.props.cartChangeHandler(this.state)}>Add to Cart</button>
         <br/>
         <button className="closebutton"onClick={()=>this.props.clickHandler([])}>{"<"}</button>
         </div>
