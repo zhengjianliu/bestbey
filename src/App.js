@@ -5,6 +5,7 @@ import NavBar from './containers/NavBar';
 import Showpage from './containers/Showpage'
 import SlidePanel from './containers/SlidePanel';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { Navbar } from 'react-bootstrap';
 
 class App extends React.Component {
 
@@ -25,10 +26,8 @@ class App extends React.Component {
     this.setState({cart:[...this.state.cart, product]})
   }
 
-
-
   render() {
-    console.log("Here is the cart:",this.state.cart)
+    // console.log("Here is the cart:",this.state.cart)
     return (
       <Router>
         <div className="App">

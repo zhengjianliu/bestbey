@@ -6,7 +6,10 @@ class ProductCard extends Component{
     return(
       <div className="productcard">
         <div onClick={()=>this.props.clickHandler(this.props.product)}>
-          <img src={this.props.product.frontimg} />
+          <img 
+            alt={this.props.product.name}
+            src={this.props.product.frontimg} 
+          />
         </div>
         <h3>{this.props.product.name} | {this.props.product.brand}</h3>
         <h4>Star: {this.props.product.rating}</h4>

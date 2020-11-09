@@ -5,30 +5,26 @@ export default class DetailPage extends React.Component{
   state={
     sku: this.props.product.skus[0],
     frontimg:this.props.product.frontimg,
-    option: this.props.product.product_option_values[0].id,
     quantity: 1
   }
   renderOptions = () =>{
-    return this.props.product.product_option_values.map(option=><option value={option.id}>{option.name}</option>)
+    return this.props.product.product_option_values.map(option=><option key={option.id} value={option.id}>{option.name}</option>)
   }
 
-  renderGetPrice = () =>{
-    let product = this.props.product.skus.find(sku => sku.product_option_value_id === parseInt(this.state.option))
-    return product.price
-  }
-
-  changeHanlder= e =>{
-    this.setState({option: parseInt(e.target.value)})
-    this.setState({sku: this.props.product.skus.find(sku=> sku.product_option_value_id === this.state.option)})
+  setSku = (e) => {
+    let foundSku = this.props.product.skus.find( sku => sku.product_option_value_id === parseInt(e.target.value) )
+    this.setState({sku: foundSku})
   }
 
   render(){
-    console.log(this.state.option)
-    console.log(this.state.sku)
+
     return(
       <div>
         <div className="leftsidepenl">
-          <img src={this.props.product.frontimg}/>
+          <img 
+            alt={this.props.product.name}
+            src={this.props.product.frontimg}
+          />
         </div>
 
         <div className="rightsidepanel">
@@ -36,14 +32,14 @@ export default class DetailPage extends React.Component{
         <h3>Options</h3>
         <form>
           <b>{this.props.product.product_options[0].name.toUpperCase()}:</b>
-          <select onChange={this.changeHanlder}>
+          <select onChange={this.setSku}>
             {this.renderOptions()}
           </select>
         </form>
 
         <p>{this.props.product.additional_specs}</p>
 
-        <h1>Price: ${this.renderGetPrice()}</h1>
+        <h1>Price: ${this.state.sku.price}</h1>
         <hr/>
         <button onClick={()=>this.props.cartChangeHandler(this.state)}>Add to Cart</button>
         <br/>
