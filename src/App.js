@@ -77,7 +77,7 @@ class App extends React.Component {
   // }
 
   getOrderSkus = () => {
-    return this.state.cart.map( cartItem => cartItem.sku)
+    return this.state.cart.map( cartItem => ({sku: cartItem.sku, quantity: cartItem.quantity}))
   }
 
   orderHandler = (cart) =>{
@@ -99,7 +99,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.user)
+    console.log(this.getOrderSkus())
     return (
       <Router>
         <div className="App">
