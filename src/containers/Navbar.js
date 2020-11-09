@@ -36,8 +36,8 @@ class NavBar extends React.Component {
           </div>
           <div id="navbar"></div>
           <SlidePanel cart={this.props.cart} products ={this.props.products} clickCart={this.state.clickCart} clicking={this.state.clicking}/>
-          <Login 
-            popup={this.state.popup} 
+          <Login
+            popup={this.state.popup}
             popupClickHandler={this.popupClickHandler}
             handleUserLogin={this.props.handleUserLogin}
             />

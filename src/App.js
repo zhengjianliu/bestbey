@@ -2,10 +2,10 @@ import React from 'react'
 import './App.css';
 import Home from './containers/Home'
 import NavBar from './containers/NavBar';
-import Showpage from './containers/Showpage'
-// import SlidePanel from './containers/SlidePanel';
+import ConfirmationPage from './containers/ConfirmationPage'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-// import { Navbar } from 'react-bootstrap';
+import CheckoutPage from './containers/CheckoutPage'
+
 
 class App extends React.Component {
 
@@ -31,11 +31,11 @@ class App extends React.Component {
   }
 
   findUser = (users, userObj) =>{
-    let newUser =  users.find(user => 
+    let newUser =  users.find(user =>
       user.username === userObj.username &&
       user.password === userObj.password
       )
-    if (newUser) {this.setState({user: newUser})} 
+    if (newUser) {this.setState({user: newUser})}
   }
 
   filteredContent = () =>{
@@ -54,22 +54,42 @@ class App extends React.Component {
     this.setState({searchterm: e.target.value})
   }
 
+  // filteredCart = () =>{
+  //   let newCart = []
+  //   if(this.state.cart.length >= 2){
+  //       let i = 0
+  //       let currentItem = this.state.cart[i].sku.name
+  //       let nextItem = this.state.cart[i+1].sku.name
+  //       console.log(currentItem)
+  //       console.log(nextItem)
+  //
+  //       if( currentItem=== nextItem){
+  //         newCart = this.state.cart.splice(1,1)
+  //         console.log(newCart)
+  //       }
+  //
+  //   }
+  // }
+
+  orderHandler = (cart) =>{
+    console.log(cart, this.state.user.id)
+  }
+
   render() {
-    // console.log("Here is the cart:",this.state.cart)
     return (
       <Router>
         <div className="App">
-          <NavBar 
-            cart={this.state.cart} 
-            products={this.state.products} 
-            searchHandler={this.searchHandler} 
+          <NavBar
+            cart={this.state.cart}
+            products={this.state.products}
+            searchHandler={this.searchHandler}
             searchterm={this.state.searchterm}
             handleUserLogin={this.handleUserLogin}
             />
           <Route exact path="/" render={() =>
-            <Home    
-              products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>
-          <Route path="/showpage" render={() =><Showpage />}/>
+            <Home products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>
+            <Route path="/checkout" render={() =><CheckoutPage appState={this.state} orderHandler={this.orderHandler}/>}/>
+            <Route path="confirmation" render={() =><ConfirmationPage />}/>
         </div>
       </Router>
     );
