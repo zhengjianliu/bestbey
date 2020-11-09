@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class SlidePanel extends React.Component {
 
@@ -7,14 +8,15 @@ class SlidePanel extends React.Component {
     this.props.cart.forEach((item) => {
       total += item.sku.price
     });
-    return total
+    return parseFloat(total).toFixed(2)
   }
-
-
   renderCart = () =>{
-    return this.props.cart.map((item,index) =>
-      <div className="cartcontainer" cartitem-id={index}>
-        <img src={item.frontimg} alt={item.sku.name}/>
+    return this.props.cart.map(item =>
+      <div className="cartcontainer">
+        <img
+          alt={item.name}
+          src={item.frontimg}
+        />
         <div>
           <h6>{item.sku.name.toUpperCase()}</h6>
           <h5> Quantity: {item.quantity}</h5>
@@ -32,7 +34,9 @@ class SlidePanel extends React.Component {
         <div style={{marginTop:"80px"}}>
           <h2>Shopping Cart</h2>
           <div className="cart">{this.renderCart()}</div>
-          {this.getTotalAmount() === 0? null:<button id="logoutbutton">Checkout<br/>Total: ${this.getTotalAmount()}</button>}
+          {this.getTotalAmount() === 0? null:<Link to="/checkout">
+          <button id="logoutbutton">Checkout<br/>Total: ${this.getTotalAmount()}</button>
+          </Link>}
         </div>
       )
 

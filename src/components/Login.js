@@ -12,6 +12,12 @@ class Login extends Component{
 
   handleSubmit =  (e) => {
     e.preventDefault()
+    this.props.handleUserLogin(this.state)
+    this.setState({
+      username: "",
+      password: ""
+    })
+    this.props.popupClickHandler()
   }
 
   render(){
