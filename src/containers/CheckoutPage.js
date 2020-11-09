@@ -12,20 +12,21 @@ class CheckoutPage extends React.Component {
       <tr>
         <td><img src={item.frontimg}/></td>
         <td><h5>{item.sku.name.toUpperCase()}</h5></td>
-        <td>Quantity: {item.quantity}</td>
+        <td><h4>Quantity: {item.quantity}</h4></td>
       </tr>
     )
   }
     render(){
 
         return(
-            <div style={{paddingTop:"80px"}}>
-              <h1>Checkout Page</h1>
+            <div style={{paddingTop:"80px"}} >
+                <h1>Checkout Page</h1>
               <hr className="hrline"/>
-              <button onClick={()=>this.props.orderHandler(this.state.cart)}>Place Order</button>
+
               <table id="checkoutcontainer">
                 {this.renderCartItem()}
               </table>
+              <button className="addbutton cardbuttons"onClick={()=>this.props.orderHandler(this.state.cart)}>Place Order</button>
 
             </div>
         )

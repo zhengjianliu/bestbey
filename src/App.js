@@ -54,6 +54,10 @@ class App extends React.Component {
     this.setState({searchterm: e.target.value})
   }
 
+  logoutHandler = () =>{
+    this.setState({user:[]})
+  }
+
   // filteredCart = () =>{
   //   let newCart = []
   //   if(this.state.cart.length >= 2){
@@ -72,10 +76,11 @@ class App extends React.Component {
   // }
 
   orderHandler = (cart) =>{
-    console.log(cart, this.state.user.id)
+    console.log(cart)
   }
 
   render() {
+    console.log(this.state.user)
     return (
       <Router>
         <div className="App">
@@ -85,6 +90,8 @@ class App extends React.Component {
             searchHandler={this.searchHandler}
             searchterm={this.state.searchterm}
             handleUserLogin={this.handleUserLogin}
+            logoutHandler={this.logoutHandler}
+            user = {this.state.user}
             />
           <Route exact path="/" render={() =>
             <Home products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>

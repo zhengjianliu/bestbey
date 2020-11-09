@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Account from './Account'
 
 class SlidePanel extends React.Component {
 
@@ -10,6 +11,7 @@ class SlidePanel extends React.Component {
     });
     return parseFloat(total).toFixed(2)
   }
+
   renderCart = () =>{
     return this.props.cart.map(item =>
       <div className="cartcontainer">
@@ -34,8 +36,9 @@ class SlidePanel extends React.Component {
         <div style={{marginTop:"80px"}}>
           <h2>Shopping Cart</h2>
           <div className="cart">{this.renderCart()}</div>
-          {this.getTotalAmount() === 0? null:<Link to="/checkout">
-          <button id="logoutbutton">Checkout<br/>Total: ${this.getTotalAmount()}</button>
+          {this.getTotalAmount() === parseFloat(0).toFixed(2) ? null :
+          <Link to="/checkout">
+            <button id="logoutbutton">Checkout<br/>Total: ${this.getTotalAmount()}</button>
           </Link>}
         </div>
       )
@@ -44,8 +47,7 @@ class SlidePanel extends React.Component {
 
       return(
         <div style={{marginTop:"80px"}}>
-          <h1>Account</h1>
-          <button id="logoutbutton">Logout</button>
+          <Account user={this.props.user} clickCart={this.props.clickCart} logoutClickHandler={this.props.logoutClickHandler}/>
         </div>
       )
 
