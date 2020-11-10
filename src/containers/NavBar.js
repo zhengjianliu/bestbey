@@ -13,9 +13,19 @@ class NavBar extends React.Component {
 
   clickHandler= () =>{
     this.setState({clickCart: !this.state.clickCart, clicking:"cart"})
+    if(this.state.clickCart === true && this.state.clicking === "account"){
+      this.setState({clickCart: true, clicking:"cart"})
+    }else if(this.state.clickCart === true && this.state.clicking === "cart"){
+      this.setState({clickCart: false, clicking:""})
+    }
   }
   accountClickHandler= () =>{
     this.setState({clickCart: !this.state.clickCart, clicking:"account"})
+    if(this.state.clickCart === true && this.state.clicking === "cart"){
+      this.setState({clickCart: true, clicking:"account"})
+    }else if(this.state.clickCart === true && this.state.clicking === "account"){
+      this.setState({clickCart: false, clicking:""})
+    }
   }
   popupClickHandler = () =>{
     this.setState({popup: !this.state.popup})

@@ -10,7 +10,7 @@ export default class ProductCategory extends React.Component{
   render(){
     return(
       <div className="category">
-      <h1>{this.props.products[0].category.toUpperCase()}</h1>
+      <h1>{this.props.products.length!== 0? this.props.products[0].category.toUpperCase() : null}</h1>
       <div>{this.renderProducts()}</div>
       </div>
     )

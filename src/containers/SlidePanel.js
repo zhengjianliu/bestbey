@@ -8,16 +8,16 @@ class SlidePanel extends React.Component {
   getTotalAmount = () =>{
     let total = 0
     this.props.cart.forEach((item) => {
-      total += item.sku.price
+      total += item.sku.price * item.quantity
     });
     return parseFloat(total).toFixed(2)
   }
 
   renderCart = () =>{
     return this.props.cart.map(item =>
-      <CartItem 
+      <CartItem
         key={item.sku.id}
-        item={item} 
+        item={item}
         removeFromCartHandler={this.props.removeFromCartHandler}
       />
     )
