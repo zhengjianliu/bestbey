@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import SlidePanel from './SlidePanel'
-import Account from './Account'
 import Login from '../components/Login'
 import Search from '../components/Search'
 

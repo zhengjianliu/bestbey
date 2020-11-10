@@ -87,6 +87,7 @@ class App extends React.Component {
     }
   }
 
+
   removeFromCartHandler = (skuId) => {
     console.log(skuId)
     let remainingCartItems = this.state.cart.filter( item => item.sku.id !== skuId)
@@ -125,26 +126,8 @@ class App extends React.Component {
     .then(data => this.setState({currentOrder: data, cart: []}))
   }
 
-  // 
-  // filteredCart = () =>{
-  //   let newCart = this.state.cart
-  //   if(newCart.length > 1){
-  //     for(let i = 0; i < newCart.length; i++){
-  //       for(let n = 1; n < newCart.length; n++){
-  //         if(newCart[i].sku.id===newCart[n].sku.id){
-  //           newCart = newCart.splice(n,1)
-  //           newCart[i].quantity+=1
-  //         }
-  //       }
-  //     }
-  //   }
-  //   this.setState({cart:newCart})
-  // }
-
-
-
-
   render() {
+    console.log(this.state.cart)
     return (
       <Router>
         <div className="App">
@@ -161,14 +144,14 @@ class App extends React.Component {
             <Home products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>
             <Route exact path='/signup' render={()=><Signup signupHandler={this.signupHandler}/>}/>
             <Route path="/checkout" render={() =>
-              <CheckoutPage 
-                appState={this.state} 
+              <CheckoutPage
+                appState={this.state}
                 orderHandler={this.orderHandler}
                 removeFromCartHandler={this.removeFromCartHandler}
                 />}
               />
             <Route path="/confirmation" render={() =>
-              <ConfirmationPage 
+              <ConfirmationPage
                 currentOrder={this.state.currentOrder}
               />}
             />
