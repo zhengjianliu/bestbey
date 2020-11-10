@@ -66,9 +66,32 @@ class App extends React.Component {
     }
   }
 
+<<<<<<< HEAD
 
 
 
+=======
+  cartChangeHandler = product =>{
+    let newCart = this.state.cart
+    if( this.state.cart.length === 0){
+      this.setState({cart: [product]})
+    }
+    else {
+      newCart.forEach( cartItem => {
+        if (cartItem.sku.id === product.sku.id){
+          cartItem.quantity+=1
+          this.setState({
+            cart: newCart
+          })
+        } else {
+          this.setState({
+            cart: [...newCart, product]
+          })
+        }
+      })
+    }
+  }
+>>>>>>> 4b991482364e8b9a8f16f0f7c7c0594b1b5bbdde
 
   removeFromCartHandler = (skuId) => {
     console.log(skuId)
@@ -108,6 +131,28 @@ class App extends React.Component {
     .then(data => this.setState({currentOrder: data, cart: []}))
   }
 
+<<<<<<< HEAD
+=======
+  // 
+  // filteredCart = () =>{
+  //   let newCart = this.state.cart
+  //   if(newCart.length > 1){
+  //     for(let i = 0; i < newCart.length; i++){
+  //       for(let n = 1; n < newCart.length; n++){
+  //         if(newCart[i].sku.id===newCart[n].sku.id){
+  //           newCart = newCart.splice(n,1)
+  //           newCart[i].quantity+=1
+  //         }
+  //       }
+  //     }
+  //   }
+  //   this.setState({cart:newCart})
+  // }
+
+
+
+
+>>>>>>> 4b991482364e8b9a8f16f0f7c7c0594b1b5bbdde
   render() {
     console.log(this.state.cart)
     return (
