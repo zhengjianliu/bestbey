@@ -13,6 +13,22 @@ body {
   text-align: center;
 }
 
+
+.category{
+  width: 100%;
+  float: left;
+  /* overflow-x:scroll; */
+}
+
+.category h1{
+  text-align: left;
+  padding-left: 40px;
+  font: 25pt;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+
 .hrline{
   width: 60%;
   margin-top: 30px;
@@ -40,7 +56,6 @@ button{
 }
 
 #homepage{
-  background: rgb(34, 158, 3);
   position: absolute;
   width: 100%;
   margin-top: 60px;

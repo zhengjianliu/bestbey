@@ -1,30 +1,43 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
-// import CardDeck  from 'react-bootstrap/CardDeck'
 import DetailPage from './DetailPage'
+import ProductCategory from './ProductCategory'
 
 class Home extends React.Component {
   state={
     show: [],
     clicked: false,
-    clickCart:false
+    clickCart:false,
+    categories: []
   }
+
   clickHandler = product =>{
     this.setState({clicked: !this.state.clicked, show: product})
   }
 
-  renderProducts = () => {
-    return this.props.products.map(product =><ProductCard key={product.id} product={product} clickHandler={this.clickHandler}/>)
+  filterCategory = () =>{
+    return this.props.products.forEach(product =>{
+      if(!this.state.categories.includes(product.category)){
+        this.setState({categories:[...this.state.categories, product.category]})
+      }
+    })
+  }
+
+  renderCategory = () =>{
+    {this.filterCategory()}
+    return this.state.categories.map(category=>{
+      let categoryProducts = this.props.products.filter( product => product.category === category)
+      return <ProductCategory products={categoryProducts} clickHandler={this.clickHandler}/>
+    })
   }
 
   render() {
-    let options = this.state.show
+    console.log(this.state.categories)
     return (
       <section>
 
         <div id="homepage" className={this.state.clicked? "slidetoleft": null}>
-          {this.props.products.length===0 ? <h1>loading...</h1> : this.renderProducts()}
+          {this.props.products.length===0 ? <h1>loading...</h1> : this.renderCategory()}
         </div>
 
         <div id="secondpage" className={this.state.clicked?"slidetoright":null}>
