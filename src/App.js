@@ -13,7 +13,7 @@ class App extends React.Component {
     products: [],
     user:[],
     cart:[],
-    currentOrder: [],
+    currentOrder: null,
     searchterm:""
   }
 
@@ -25,7 +25,6 @@ class App extends React.Component {
   }
 
   handleUserLogin = (userObj) => {
-    // console.log(userObj)
     fetch("http://localhost:3000/users")
     .then(response => response.json())
     .then(users => this.findUser(users, userObj))
@@ -88,7 +87,7 @@ class App extends React.Component {
     return this.state.cart.map( cartItem => ({sku: cartItem.sku, quantity: cartItem.quantity}))
   }
 
-  orderHandler = (cart) =>{
+  orderHandler = () =>{
     let options = {
       method: "POST",
       headers: {
@@ -102,8 +101,9 @@ class App extends React.Component {
     }
     fetch("http://localhost:3000/orders", options)
     .then(response => response.json())
-    .then(data => this.setState({currentOrder: data}))
+    .then(data => this.setState({currentOrder: data, cart: []}))
   }
+
 
   render() {
     return (
@@ -128,7 +128,11 @@ class App extends React.Component {
                 removeFromCartHandler={this.removeFromCartHandler}
                 />}
               />
-            <Route path="confirmation" render={() =><ConfirmationPage />}/>
+            <Route path="/confirmation" render={() =>
+              <ConfirmationPage 
+                currentOrder={this.state.currentOrder}
+              />}
+            />
         </div>
       </Router>
     );

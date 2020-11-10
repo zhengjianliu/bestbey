@@ -1,5 +1,7 @@
 import React from 'react'
 import CartItem from '../components/CartItem'
+import {Link} from 'react-router-dom'
+
 
 class CheckoutPage extends React.Component {
 
@@ -23,7 +25,12 @@ class CheckoutPage extends React.Component {
               <table id="checkoutcontainer">
                 {this.renderCartItem()}
               </table>
-              <button className="addbutton cardbuttons"onClick={()=>this.props.orderHandler(this.props.appState.cart)}>Place Order</button>
+              <Link to="/confirmation">
+                <button 
+                  className="addbutton cardbuttons"
+                  onClick={()=>this.props.orderHandler(this.props.appState.cart)}
+                  >Place Order</button>
+              </Link>
             </div>
         )
     }
