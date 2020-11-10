@@ -21,7 +21,6 @@ class CheckoutPage extends React.Component {
             <div style={{paddingTop:"80px"}} >
                 <h1>Checkout Page</h1>
               <hr className="hrline"/>
-
               <table id="checkoutcontainer">
                 {this.renderCartItem()}
               </table>
