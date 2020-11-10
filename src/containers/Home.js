@@ -24,7 +24,7 @@ class Home extends React.Component {
       <section>
 
         <div id="homepage" className={this.state.clicked? "slidetoleft": null}>
-          {this.renderProducts()}
+          {this.props.products.length===0 ? <h1>loading...</h1> : this.renderProducts()}
         </div>
 
         <div id="secondpage" className={this.state.clicked?"slidetoright":null}>
