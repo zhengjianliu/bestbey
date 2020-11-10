@@ -34,7 +34,7 @@ class NavBar extends React.Component {
           <div id="navbar-item">
             <Link to="/"><h3>Navbar</h3></Link>
             <div>
-              <Search searchHandler={this.props.searchHandler} searchterm={this.props.searchterm}/>
+              <Search searchHandler={this.props.searchHandler}/>
               {this.props.user.id === undefined?
                 <h2 onClick={this.popupClickHandler}>Login</h2>
               :

@@ -4,8 +4,8 @@ class Search extends Component{
 
   render(){
     return(
-      <form >
-        <input className="searchbar" value={this.props.searchterm} name="search" placeholder="Search" onChange={this.props.searchHandler}/>
+      <form onSubmit={e => { e.preventDefault(); }}>
+        <input type="text" className="searchbar" name="search" placeholder="Search" onChange={this.props.searchHandler}/>
       </form>
     )
   }

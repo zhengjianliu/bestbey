@@ -5,6 +5,7 @@ import NavBar from './containers/NavBar';
 import ConfirmationPage from './containers/ConfirmationPage'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import CheckoutPage from './containers/CheckoutPage'
+import Signup from './containers/Signup'
 
 
 class App extends React.Component {
@@ -39,6 +40,25 @@ class App extends React.Component {
     if (newUser) {this.setState({user: newUser})}
   }
 
+  signupHandler = newUserData =>{
+    console.log(newUserData)
+    let options ={
+      method: "POST",
+      headers: {
+        "content-type":"application/json",
+        "accept":"application/json"
+      },
+      body: JSON.stringify({
+        username: newUserData.username,
+        firstname: newUserData.firstname,
+        lastname: newUserData.lastname,
+        password: newUserData.password
+      })
+    }
+    fetch("http://localhost:3000/users",options)
+    .then(response => response.json())
+  }
+
   filteredContent = () =>{
     if (this.state.searchterm === ""){
       return this.state.products
@@ -52,6 +72,7 @@ class App extends React.Component {
   }
 
   searchHandler = e =>{
+    e.preventDefault()
     this.setState({searchterm: e.target.value})
   }
 
@@ -59,25 +80,8 @@ class App extends React.Component {
     this.setState({user:[]})
   }
 
-  // filteredCart = () =>{
-  //   let newCart = []
-  //   if(this.state.cart.length >= 2){
-  //       let i = 0
-  //       let currentItem = this.state.cart[i].sku.name
-  //       let nextItem = this.state.cart[i+1].sku.name
-  //       console.log(currentItem)
-  //       console.log(nextItem)
-  //
-  //       if( currentItem=== nextItem){
-  //         newCart = this.state.cart.splice(1,1)
-  //         console.log(newCart)
-  //       }
-  //
-  //   }
-  // }
-
   getOrderSkus = () => {
-    return this.state.cart.map( cartItem => cartItem.sku)
+    return this.state.cart.map( cartItem => ({sku: cartItem.sku, quantity: cartItem.quantity}))
   }
 
   orderHandler = (cart) =>{
@@ -98,9 +102,23 @@ class App extends React.Component {
     .then(data => this.setState({currentOrder: data}))
   }
 
+  // 
+  // filteredCart = () =>{
+  //   let newCart = this.state.cart
+  //   if(newCart.length > 1){
+  //     for(let i = 0; i < newCart.length; i++){
+  //       for(let n = 1; n < newCart.length; n++){
+  //         if(newCart[i].sku.id===newCart[n].sku.id){
+  //           newCart = newCart.splice(n,1)
+  //           newCart[i].quantity+=1
+  //         }
+  //       }
+  //     }
+  //   }
+  //   this.setState({cart:newCart})
+  // }
+
   render() {
-    console.log(this.state.cart)
-    console.log(this.state.user)
     return (
       <Router>
         <div className="App">
@@ -108,7 +126,6 @@ class App extends React.Component {
             cart={this.state.cart}
             products={this.state.products}
             searchHandler={this.searchHandler}
-            searchterm={this.state.searchterm}
             handleUserLogin={this.handleUserLogin}
             logoutHandler={this.logoutHandler}
             user = {this.state.user}
@@ -116,7 +133,8 @@ class App extends React.Component {
           <Route exact path="/" render={() =>
             <Home products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>
             <Route path="/checkout" render={() =><CheckoutPage appState={this.state} orderHandler={this.orderHandler}/>}/>
-            <Route path="confirmation" render={() =><ConfirmationPage />}/>
+            <Route path="/confirmation" render={() =><ConfirmationPage />}/>
+            <Route exact path='/signup' render={()=><Signup signupHandler={this.signupHandler}/>}/>
         </div>
       </Router>
     );
