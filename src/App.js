@@ -67,7 +67,24 @@ class App extends React.Component {
   }
 
   cartChangeHandler = product =>{
-    this.setState({cart:[...this.state.cart, product]})
+    let newCart = this.state.cart
+    if( this.state.cart.length === 0){
+      this.setState({cart: [product]})
+    }
+    else {
+      newCart.forEach( cartItem => {
+        if (cartItem.sku.id === product.sku.id){
+          cartItem.quantity+=1
+          this.setState({
+            cart: newCart
+          })
+        } else {
+          this.setState({
+            cart: [...newCart, product]
+          })
+        }
+      })
+    }
   }
 
   removeFromCartHandler = (skuId) => {
@@ -123,6 +140,8 @@ class App extends React.Component {
   //   }
   //   this.setState({cart:newCart})
   // }
+
+
 
 
   render() {
