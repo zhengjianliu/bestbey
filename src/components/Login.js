@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-
+import {Link} from 'react-router-dom'
 class Login extends Component{
   state = {
     username: "",
-    password: ""
+    password: "",
   }
 
   handleChange = (e) => {
@@ -22,15 +22,15 @@ class Login extends Component{
 
   render(){
     return(
-      <div id="loginContainer" className={!this.props.popup? null : "active"}>
+      <div id="loginContainer" className={this.props.popup? "active":null}>
         <div>
           <h1>Login</h1>
           <form className="loginform" onSubmit={this.handleSubmit}>
-            <input value={this.state.username} name="username" type="text" placeholder="username" onChange={this.handleChange}></input>
+            <input value={this.state.username} name="username" type="text" placeholder="username" onChange={this.handleChange} required></input>
             <br/>
-            <input value={this.state.password} name="password" type="password" placeholder="password" onChange={this.handleChange}></input>
+            <input value={this.state.password} name="password" type="password" placeholder="password" onChange={this.handleChange} required></input>
             <button type="submit">Login</button>
-            <button type="submit">Signup</button>
+            <Link to="/signup"><button onClick={this.props.popupClickHandler}>Signup</button></Link>
           </form>
           <button className="closebutton" onClick={this.props.popupClickHandler}>X</button>
         </div>

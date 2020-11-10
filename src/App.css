@@ -300,7 +300,7 @@ select{
   position: fixed;
   top: 35vh;
   z-index: 100000;
-  opacity: 0;
+  opacity: 1;
   animation: close .3s forwards;
 }
 
@@ -348,7 +348,7 @@ select{
 
 #loginContainer div{
   width: 420px;
-  height: 310px;;
+  height: 340px;;
   background: white;
   box-shadow: -10px 10px 20px 10px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
@@ -406,6 +406,77 @@ select{
   opacity: 1;
   transform: scale(1.03);
 }
+
+
+
+
+
+
+/*signup form section*/
+
+.signupleftside{
+  background: black;
+  width: 30%;
+  height: 100vh;
+  z-index: 10000;
+  position: fixed;
+}
+
+.signupleftside h1{
+  font-size: 100pt;
+  width: 50%;
+  color: white;
+  writing-mode: vertical-rl;
+  margin-top: 10vh;
+  letter-spacing: 20px;
+  text-orientation: mixed;
+  z-index: 10000000;
+}
+
+.signuprightside{
+  margin-top: 25vh;
+  float: right;
+  background:white;
+  width: 70%;
+  right:0;
+  top: 0;
+  height: 100vh;
+  position: fixed;
+}
+
+
+.signupform{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.signupform input{
+  width: 280px;
+  margin-bottom: 20px;
+  height: 30px;
+  border: none;
+  border-bottom: 3px solid black;
+  font-size: 14pt;
+  padding-left: 5px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.signupform button{
+  margin-top: 20px;
+  border:none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 20px;
+  width: 200px;
+  background: black;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+}
+
+
 
 
 
