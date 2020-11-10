@@ -14,7 +14,7 @@ class App extends React.Component {
     products: [],
     user:[],
     cart:[],
-    currentOrder: [],
+    currentOrder: null,
     searchterm:""
   }
 
@@ -26,7 +26,6 @@ class App extends React.Component {
   }
 
   handleUserLogin = (userObj) => {
-    // console.log(userObj)
     fetch("http://localhost:3000/users")
     .then(response => response.json())
     .then(users => this.findUser(users, userObj))
@@ -71,6 +70,14 @@ class App extends React.Component {
     this.setState({cart:[...this.state.cart, product]})
   }
 
+  removeFromCartHandler = (skuId) => {
+    console.log(skuId)
+    let remainingCartItems = this.state.cart.filter( item => item.sku.id !== skuId)
+    this.setState({
+      cart: remainingCartItems
+    })
+  }
+
   searchHandler = e =>{
     e.preventDefault()
     this.setState({searchterm: e.target.value})
@@ -84,8 +91,7 @@ class App extends React.Component {
     return this.state.cart.map( cartItem => ({sku: cartItem.sku, quantity: cartItem.quantity}))
   }
 
-  orderHandler = (cart) =>{
-    // console.log(cart, this.state.user.id)
+  orderHandler = () =>{
     let options = {
       method: "POST",
       headers: {
@@ -99,7 +105,7 @@ class App extends React.Component {
     }
     fetch("http://localhost:3000/orders", options)
     .then(response => response.json())
-    .then(data => this.setState({currentOrder: data}))
+    .then(data => this.setState({currentOrder: data, cart: []}))
   }
 
   // 
@@ -118,12 +124,14 @@ class App extends React.Component {
   //   this.setState({cart:newCart})
   // }
 
+
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar
             cart={this.state.cart}
+            removeFromCartHandler={this.removeFromCartHandler}
             products={this.state.products}
             searchHandler={this.searchHandler}
             handleUserLogin={this.handleUserLogin}
@@ -132,9 +140,19 @@ class App extends React.Component {
             />
           <Route exact path="/" render={() =>
             <Home products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>
-            <Route path="/checkout" render={() =><CheckoutPage appState={this.state} orderHandler={this.orderHandler}/>}/>
-            <Route path="/confirmation" render={() =><ConfirmationPage />}/>
             <Route exact path='/signup' render={()=><Signup signupHandler={this.signupHandler}/>}/>
+            <Route path="/checkout" render={() =>
+              <CheckoutPage 
+                appState={this.state} 
+                orderHandler={this.orderHandler}
+                removeFromCartHandler={this.removeFromCartHandler}
+                />}
+              />
+            <Route path="/confirmation" render={() =>
+              <ConfirmationPage 
+                currentOrder={this.state.currentOrder}
+              />}
+            />
         </div>
       </Router>
     );
