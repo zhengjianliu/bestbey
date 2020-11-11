@@ -1,4 +1,5 @@
 import React from 'react'
+import Carousel from 'react-bootstrap/Carousel'
 export default class DetailPage extends React.Component{
   state={
     sku: this.props.product.skus[0],
@@ -20,12 +21,38 @@ export default class DetailPage extends React.Component{
   render(){
     return(
       <div>
+
         <div className="leftsidepenl">
-          <img
-            alt={this.props.product.name}
-            src={this.props.product.frontimg}
-          />
+          <Carousel>
+
+            <Carousel.Item>
+              <img
+                className="carouselimage"
+                src={this.props.product.frontimg}
+                alt="First slide"
+              />
+            </Carousel.Item>
+
+            <Carousel.Item>
+              <img
+                className="carouselimage"
+                src={this.props.product.sideimg}
+                alt="Third slide"
+              />
+            </Carousel.Item>
+
+            <Carousel.Item>
+              <img
+                className="carouselimage"
+                src={this.props.product.backimg}
+                alt="Third slide"
+              />
+            </Carousel.Item>
+
+          </Carousel>
+
         </div>
+
         <div className="rightsidepanel">
         <h2>{this.props.product.name.toUpperCase()} | {this.props.product.brand.toUpperCase()}</h2>
         <hr className="hrline"/>

@@ -11,8 +11,8 @@ class ProductCard extends Component{
             src={this.props.product.frontimg}
           />
         </div>
-        <h4>{this.props.product.name} | {this.props.product.brand}</h4>
-        <h4>Star: {this.props.product.rating}</h4>
+        <h4>{this.props.product.name.toUpperCase()} | {this.props.product.brand}</h4>
+        <h5>Star: {this.props.product.rating}</h5>
       </div>
     )
   }

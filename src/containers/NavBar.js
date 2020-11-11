@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom'
 import SlidePanel from './SlidePanel'
 import Login from '../components/Login'
 import Search from '../components/Search'
+import logouticon from '../images/logout.png'
+import loggedinicon from '../images/loggin.png'
+import shoppingcart from '../images/cart.png'
 
 class NavBar extends React.Component {
   state={
@@ -13,9 +16,19 @@ class NavBar extends React.Component {
 
   clickHandler= () =>{
     this.setState({clickCart: !this.state.clickCart, clicking:"cart"})
+    if(this.state.clickCart === true && this.state.clicking === "account"){
+      this.setState({clickCart: true, clicking:"cart"})
+    }else if(this.state.clickCart === true && this.state.clicking === "cart"){
+      this.setState({clickCart: false, clicking:""})
+    }
   }
   accountClickHandler= () =>{
     this.setState({clickCart: !this.state.clickCart, clicking:"account"})
+    if(this.state.clickCart === true && this.state.clicking === "cart"){
+      this.setState({clickCart: true, clicking:"account"})
+    }else if(this.state.clickCart === true && this.state.clicking === "account"){
+      this.setState({clickCart: false, clicking:""})
+    }
   }
   popupClickHandler = () =>{
     this.setState({popup: !this.state.popup})
@@ -26,19 +39,23 @@ class NavBar extends React.Component {
     this.props.logoutHandler()
   }
 
+  checkoutClickHandler = () =>{
+    this.setState({clickCart: !this.state.clickCart, clicking:""})
+  }
+
     render(){
       return(
         <div>
           <div id="navbar-item">
-            <Link to="/"><h3>Navbar</h3></Link>
+            <Link to="/"><h3>BESTBEY</h3></Link>
             <div>
-              <Search searchHandler={this.props.searchHandler}/>
+              <Search searchHandler={this.props.searchHandler} className="searchbar"/>
               {this.props.user.id === undefined?
-                <h2 onClick={this.popupClickHandler}>Login</h2>
+                <img src={logouticon} className="loginicon" onClick={this.popupClickHandler}/>
                 :
                 <>
-                  <h2 onClick={this.clickHandler}>Cart</h2>
-                  <h2 onClick={this.accountClickHandler}>Account</h2>
+                  <img onClick={this.clickHandler} src={shoppingcart} className="loggedinicon" />
+                  <img src={loggedinicon} onClick={this.accountClickHandler} className="loggedinicon" />
                 </>
               }
             </div>
@@ -51,7 +68,8 @@ class NavBar extends React.Component {
             clickCart={this.state.clickCart}
             clicking={this.state.clicking}
             user={this.props.user}
-            logoutClickHandler={this.logoutClickHandler}/>
+            logoutClickHandler={this.logoutClickHandler}
+            checkoutClickHandler={this.checkoutClickHandler}/>
           <Login
             popup={this.state.popup}
             popupClickHandler={this.popupClickHandler}
