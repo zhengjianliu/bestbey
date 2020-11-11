@@ -7,6 +7,7 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
   -webkit-user-drag: none;
+  list-style-type: none;
 }
 
 body {
@@ -528,6 +529,23 @@ table tr td img{
 .accountcontainer{
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.orderHistory{
+  color: #606060;
+}
+
+.orderHistoryList {
+  padding-left: 0;
+}
+
+.receiptItem{
+
+}
+
+.receiptItem:hover {
+  cursor: pointer;
+
 }
 
 /*mobile view section*/
