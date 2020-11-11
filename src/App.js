@@ -67,26 +67,23 @@ class App extends React.Component {
   }
 
   cartChangeHandler = product =>{
+    console.log(product)
     let newCart = this.state.cart
-    if( this.state.cart.length === 0){
-      this.setState({cart: [product]})
-    }
-    else {
-      newCart.forEach( cartItem => {
-        if (cartItem.sku.id === product.sku.id){
-          cartItem.quantity+=1
-          this.setState({
-            cart: newCart
-          })
-        } else {
-          this.setState({
-            cart: [...newCart, product]
-          })
+    if(newCart.some(cartItem => cartItem.sku.id === product.sku.id)){
+      for(let i = 0; i < newCart.length; i++){
+        if (newCart[i].sku.id === product.sku.id){
+          newCart[i].quantity += product.quantity;
+          // console.log("updating quantity of item: ", newCart[i])
+          this.setState({cart: newCart})
+          break;
         }
+      }
+    } else {
+        this.setState({
+        cart: [...newCart, product]
       })
     }
   }
-
 
   removeFromCartHandler = (skuId) => {
     console.log(skuId)
@@ -127,7 +124,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.cart)
     return (
       <Router>
         <div className="App">

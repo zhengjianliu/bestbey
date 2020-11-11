@@ -16,6 +16,7 @@ class Home extends React.Component {
   }
 
   filterCategory = () =>{
+    
     return this.props.products.forEach(product =>{
       if(!this.state.categories.includes(product.category)){
         this.setState({categories:[...this.state.categories, product.category]})
@@ -23,16 +24,20 @@ class Home extends React.Component {
     })
   }
 
+  // componentDidMount(){
+  //   this.filterCategory()
+  // }
+
   renderCategory = () =>{
     {this.filterCategory()}
     return this.state.categories.map(category=>{
       let categoryProducts = this.props.products.filter( product => product.category === category)
-      return <ProductCategory products={categoryProducts} clickHandler={this.clickHandler}/>
+      return <ProductCategory key={category}
+        products={categoryProducts} clickHandler={this.clickHandler}/>
     })
   }
 
   render() {
-    console.log(this.state.categories)
     return (
       <section>
 

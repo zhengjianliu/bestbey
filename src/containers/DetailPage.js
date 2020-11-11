@@ -12,6 +12,11 @@ export default class DetailPage extends React.Component{
     let foundSku = this.props.product.skus.find( sku => sku.product_option_value_id === parseInt(e.target.value) )
     this.setState({sku: foundSku})
   }
+
+  changeQuantity = (e) => {
+    this.setState({quantity: parseInt(e.target.value)})
+  }
+
   render(){
     return(
       <div>
@@ -32,7 +37,8 @@ export default class DetailPage extends React.Component{
           </select>
         </form>
         <p style={{textAlign:"left",padding:"20px", paddingRight:"30px"}}>{this.props.product.additional_specs}</p>
-        <h1>Price: ${this.state.sku.price}</h1>
+        <h3>Price: ${this.state.sku.price}</h3>
+        <input title="quantity" type="number" value={this.state.quantity} onChange={this.changeQuantity} ></input>
         <button className="cardbuttons addbutton" onClick={()=>this.props.cartChangeHandler(this.state)}>Add to Cart</button>
         <br/>
         <button className="closebutton"onClick={()=>this.props.clickHandler([])}>{"<"}</button>
