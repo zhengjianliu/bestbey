@@ -4,7 +4,7 @@ import ReceiptItem from '../components/ReceiptItem'
 class Account extends React.Component {
 
     renderReceipts = () => {
-      return this.props.user.receipts.map(rec => 
+      return this.props.user.receipts.map(rec =>
         <ReceiptItem receipt={rec}/>
       )
     }
@@ -12,9 +12,8 @@ class Account extends React.Component {
     render(){
       let {firstname, lastname} = this.props.user
         return(
-            <div className="accountcontainer">
+            <div className="cart">
               <h2>Welcome Back</h2>
-              {/* <br/> */}
               <h3>{firstname} {lastname}</h3>
               <h4 className="orderHistory">Order History</h4>
               <ul className="orderHistoryList" >

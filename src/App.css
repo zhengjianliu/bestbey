@@ -19,11 +19,32 @@ body {
 }
 
 
+.displaycategory{
+  font-size: 20pt;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.displaycategory a{
+  font-size: 13pt;
+  margin: 0px 25px;
+  height:75px;
+}
+
+.displaycategory a p{
+  padding-top: 10px;
+  align-self:baseline;
+}
+
+.iconImg {
+  height: 60px;
+}
+
 .category{
   width: 100%;
   float: left;
-  /* overflow-x:scroll; */
-
 }
 
 .category h1{
