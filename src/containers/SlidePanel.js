@@ -19,10 +19,10 @@ class SlidePanel extends React.Component {
         key={item.sku.id}
         item={item}
         removeFromCartHandler={this.props.removeFromCartHandler}
+        changeQuantityHandler={this.props.changeQuantityHandler}
       />
     )
   }
-
 
   renderCartOrAccount = () =>{
     if(this.props.clicking === "cart"){

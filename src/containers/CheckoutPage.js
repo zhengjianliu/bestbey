@@ -19,6 +19,7 @@ class CheckoutPage extends React.Component {
         item={item}
         key={item.sku.id}
         removeFromCartHandler={this.props.removeFromCartHandler}
+        changeQuantityHandler={this.props.changeQuantityHandler}
         checkout
       />
     )

@@ -64,6 +64,7 @@ class NavBar extends React.Component {
           <SlidePanel
             cart={this.props.cart}
             removeFromCartHandler={this.props.removeFromCartHandler}
+            changeQuantityHandler={this.props.changeQuantityHandler}
             products ={this.props.products}
             clickCart={this.state.clickCart}
             clicking={this.state.clicking}
