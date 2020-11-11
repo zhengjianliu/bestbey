@@ -1,6 +1,7 @@
 import React from 'react'
 import CartItem from '../components/CartItem'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import emptycart from '../images/emptycart.png'
 
 
 class CheckoutPage extends React.Component {
@@ -33,13 +34,23 @@ class CheckoutPage extends React.Component {
               <table id="checkoutcontainer">
                 {this.renderCartItem()}
               </table>
-              <h1>Total: ${this.getTotal()}</h1>
-              <Link to="/confirmation">
-                <button
-                  className="addbutton cardbuttons"
-                  onClick={()=>this.props.orderHandler(this.props.appState.cart)}
-                  >Place Order</button>
-              </Link>
+
+
+                {parseInt(this.getTotal()) ===  0? <div>
+                  <h1>Your cart is empty...</h1><br/>
+                  <Link to="/"><img src={emptycart} alt="empty cart"/></Link></div>
+                  :
+                  <div>
+                  <h1>Total: ${this.getTotal()}</h1>
+                  <Link to="/confirmation">
+                  <button
+                    className="addbutton cardbuttons"
+                    onClick={()=>this.props.orderHandler(this.props.appState.cart)}
+                    >Place Order</button>
+                </Link>
+                </div>
+                }
+
             </div>
         )
     }
