@@ -8,7 +8,7 @@ class Home extends React.Component {
     show: [],
     clicked: false,
     clickCart:false,
-    categories: []
+    categories: [],
   }
 
   clickHandler = product =>{
@@ -16,17 +16,12 @@ class Home extends React.Component {
   }
 
   filterCategory = () =>{
-    
     return this.props.products.forEach(product =>{
       if(!this.state.categories.includes(product.category)){
         this.setState({categories:[...this.state.categories, product.category]})
       }
     })
   }
-
-  // componentDidMount(){
-  //   this.filterCategory()
-  // }
 
   renderCategory = () =>{
     {this.filterCategory()}
@@ -37,11 +32,23 @@ class Home extends React.Component {
     })
   }
 
+  renderCategoryIcon = () =>{
+    return this.state.categories.map(category =>
+      <a href={`#${category}`}>
+        <img className="iconImg" src={this.props.products.find( product => product.category === category).frontimg}></img>
+        <p>{category.toUpperCase()}</p>
+      </a>
+    )
+  }
+
   render() {
     return (
       <section>
 
         <div id="homepage" className={this.state.clicked? "slidetoleft": null}>
+
+          <div className="displaycategory">{this.renderCategoryIcon()}</div>
+
           {this.props.products.length===0 ? <h1>loading...</h1> : this.renderCategory()}
         </div>
 

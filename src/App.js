@@ -67,13 +67,11 @@ class App extends React.Component {
   }
 
   cartChangeHandler = product =>{
-    console.log(product)
     let newCart = this.state.cart
     if(newCart.some(cartItem => cartItem.sku.id === product.sku.id)){
       for(let i = 0; i < newCart.length; i++){
         if (newCart[i].sku.id === product.sku.id){
           newCart[i].quantity += product.quantity;
-          // console.log("updating quantity of item: ", newCart[i])
           this.setState({cart: newCart})
           break;
         }
