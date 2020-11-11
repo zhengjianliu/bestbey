@@ -32,7 +32,7 @@ class SlidePanel extends React.Component {
           <div className="cart">{this.renderCart()}</div>
           {this.getTotalAmount() === parseFloat(0).toFixed(2) ? null :
           <Link to="/checkout">
-            <button id="logoutbutton">Checkout<br/>Total: ${this.getTotalAmount()}</button>
+            <button id="logoutbutton" onClick={this.props.checkoutClickHandler}>Checkout<br/>Total: ${this.getTotalAmount()}</button>
           </Link>}
         </div>
       )

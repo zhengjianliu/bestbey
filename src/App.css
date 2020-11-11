@@ -9,6 +9,10 @@
   -webkit-user-drag: none;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   text-align: center;
 }
@@ -18,14 +22,17 @@ body {
   width: 100%;
   float: left;
   /* overflow-x:scroll; */
+
 }
 
 .category h1{
   text-align: left;
-  padding-left: 40px;
-  font: 25pt;
+  padding-left: 30px;
+  font-size: 20pt;
+  font-weight: 700;
   letter-spacing: 3px;
   cursor: pointer;
+  margin-top: 40px;
 }
 
 
@@ -37,7 +44,7 @@ body {
 }
 
 .searchbar{
-  margin-top: 20px;
+  margin-top: 15px;
   margin-right: 20px;
   border-radius: 20px;
   border: 2px solid grey;
@@ -58,7 +65,7 @@ button{
 #homepage{
   position: absolute;
   width: 100%;
-  margin-top: 60px;
+  margin-top: 70px;
   height: 200vh;
   opacity: 1;
   z-index: 10;
@@ -89,24 +96,25 @@ button{
 }
 
 .leftsidepenl{
-  margin-top: 100px;
+  margin-top: 150px;
+  width: 40%;
   height: 500px;
-  width: 500px;
   float: left;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.leftsidepenl img{
-  max-width: 100%;
-
+.carouselimage{
+  max-width: 500px;
+  height: 600px;
 }
 
 .rightsidepanel{
+  margin-top: 150px;
   float: right;
-  margin-left: 30px;
-  width: 55%;
+  padding: 3%;
+  width: 60%;
 }
 
 select{
@@ -142,11 +150,30 @@ select{
   display: flex;
 }
 
+
 #navbar-item h3{
-  padding-left:20px;
+  color:black;
+  font-size: 28pt;
+  margin-top:8px;
+  margin-left: 20px;
+  font-weight: 700px;
+  cursor: pointer;
+}
+
+#navbar-item .loginicon, #navbar-item .loggedinicon{
+  width: auto;
+margin-top: 5px;
+  height: 50px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+a:hover{
+  text-decoration: none;
 }
 
 #navbar-item h2{
+  padding-top: 10px;
   padding-right:20px;
   cursor: pointer;
 }
@@ -183,22 +210,30 @@ select{
 
 
 .cartcontainer{
-  height: 70px;
+  height: auto;
   width: 90%;
   margin-top: 15px;
   margin-left: 5%;
-  border-bottom: 3px solid black;
-  padding-bottom: 25px;
+  border-bottom: 2px solid black;
+  padding-bottom: 15px;
+  transition: .5s;
+}
+.cartcontainer:hover{
+  transform: scale(1.01);
 }
 
 .cartcontainer div h6{
   margin:0px;
   padding-bottom: 10px;
+  font-size: 8pt;
 }
 
 .cartcontainer div h5{
   margin: 0px;
   padding-top: 0px;
+  font-size: 12pt;
+  font-weight: 700;
+  text-align: center;
   padding-bottom: 20px;
 }
 
@@ -220,12 +255,9 @@ select{
   transform: scale(1.04);
 }
 
-
-
 .cartcontainer img{
   float:left;
-  height: 80px;
-  width: 90px;
+  width: 70px;
   margin-right: 10px;
 }
 
@@ -273,18 +305,19 @@ select{
 
 .productcard div img{
   float: left;
-  width:  200px;
+  max-width: 240px;
   height: 200px;
   margin: 10px;
   object-fit: cover;
 }
 
-
-
-.productcard p{
-  text-align: left;
-  font-size: 9pt;
-  line-height: 18px;
+.productcard h4{
+  padding: 15px;
+  font-size: 11pt;
+}
+.productcard h5{
+  font-size: 15pt;
+  font-weight: 700;
 }
 
 .cardbuttons{
@@ -323,6 +356,14 @@ select{
   opacity: 1;
   animation: close .3s forwards;
 }
+
+#loginContainer div h1{
+  font-size: 30pt;
+  margin-top: 20px;
+  font-weight: 700px;
+  letter-spacing: 2px;
+}
+
 
 @keyframes close {
   0%{
@@ -522,6 +563,23 @@ td{
   padding-top: 20px;
   padding-bottom: 30px;
 }
+
+#checkoutcontainer tr td h5{
+  font-size: 12pt;
+}
+
+#checkoutcontainer tr td h4{
+  font-size: 15pt;
+}
+#checkoutcontainer tr td button{
+  border:none;
+  background-color: rgb(255, 62, 62);
+  border-radius: 20px;
+  font-size: 12pt;
+  padding: 5px 20px;
+  font-weight: 700;
+}
+
 table tr td img{
   max-width: 180px;
   max-height: 180px;
@@ -547,6 +605,45 @@ table tr td img{
   .productcard{
     width: 50%;
     transition: .5s;
+  }
+
+  .leftsidepenl{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carouselimage{
+    max-width: 1200px;
+    height: 600px;
+  }
+
+  .rightsidepanel{
+    margin-top: 80px;
+    padding: 5%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10vh;
+  }
+  #secondpage{
+    height: auto;
+  }
+
+  #checkoutcontainer tr:first-child img{
+    height: 100px;
+  }
+
+  #checkoutcontainer tr td h5{
+    font-size: 9pt;
+  }
+  #checkoutcontainer tr td h4{
+    font-size: 12pt;
+  }
+  #checkoutcontainer tr td button{
+    margin-right:-30px;
   }
 }
 
