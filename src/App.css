@@ -108,7 +108,7 @@ button{
 }
 
 #homepage.slidetoleft{
-  transform: translateX(-100%);
+  transform: translateX(-100%) scaleX(0);
   opacity: 0;
 }
 
