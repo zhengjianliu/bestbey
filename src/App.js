@@ -83,6 +83,16 @@ class App extends React.Component {
     }
   }
 
+  changeQuantityHandler = (skuId, newValue) => {
+    let newArray = [...this.state.cart]
+    let foundCartItem = newArray.find( cartItem => cartItem.sku.id === skuId)
+    foundCartItem.quantity = newValue
+    newArray[newArray.indexOf(foundCartItem)] = foundCartItem
+    this.setState({
+      cart: newArray
+    })
+  }
+
   removeFromCartHandler = (skuId) => {
     console.log(skuId)
     let remainingCartItems = this.state.cart.filter( item => item.sku.id !== skuId)
@@ -134,6 +144,7 @@ class App extends React.Component {
           <NavBar
             cart={this.state.cart}
             removeFromCartHandler={this.removeFromCartHandler}
+            changeQuantityHandler={this.changeQuantityHandler}
             products={this.state.products}
             searchHandler={this.searchHandler}
             handleUserLogin={this.handleUserLogin}
@@ -147,6 +158,7 @@ class App extends React.Component {
               <CheckoutPage
                 appState={this.state}
                 orderHandler={this.orderHandler}
+                changeQuantityHandler={this.changeQuantityHandler}
                 removeFromCartHandler={this.removeFromCartHandler}
                 />}
               />
