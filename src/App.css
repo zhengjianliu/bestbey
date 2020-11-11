@@ -40,8 +40,21 @@ body {
 
 .iconImg {
   height: 60px;
+  transition: .5s;
 }
 
+.iconImg:hover{
+  transform: scale(1.1);
+}
+
+
+.quantity{
+  border: 2px solid black;
+  width: 60px;
+  padding-left: 14px;
+  font-weight: 700;
+  font-size: 15pt;
+}
 .category{
   width: 100%;
   float: left;

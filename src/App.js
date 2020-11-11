@@ -103,7 +103,10 @@ class App extends React.Component {
   }
 
   logoutHandler = () =>{
-    this.setState({user:[]})
+    this.setState({
+      user:[],
+      cart:[],
+      currentOrder: null})
   }
 
   getOrderSkus = () => {
@@ -141,7 +144,7 @@ class App extends React.Component {
             user = {this.state.user}
             />
           <Route exact path="/" render={() =>
-            <Home products={this.filteredContent()} cartChangeHandler={this.cartChangeHandler}/>}/>
+            <Home products={this.filteredContent()} user={this.state.user}cartChangeHandler={this.cartChangeHandler}/>}/>
             <Route exact path='/signup' render={()=><Signup signupHandler={this.signupHandler}/>}/>
             <Route path="/checkout" render={() =>
               <CheckoutPage

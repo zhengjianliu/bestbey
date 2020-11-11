@@ -65,8 +65,13 @@ export default class DetailPage extends React.Component{
         </form>
         <p style={{textAlign:"left",padding:"20px", paddingRight:"30px"}}>{this.props.product.additional_specs}</p>
         <h3>Price: ${this.state.sku.price}</h3>
-        <input title="quantity" type="number" value={this.state.quantity} onChange={this.changeQuantity} ></input>
+        {this.props.user.length !==0 ?
+        <div>
+        <p>Quantity:</p>
+        <input title="quantity" type="number" value={this.state.quantity} onChange={this.changeQuantity} min="1" max="10" className="quantity"></input><br/>
         <button className="cardbuttons addbutton" onClick={()=>this.props.cartChangeHandler(this.state)}>Add to Cart</button>
+        </div>
+        : null}
         <br/>
         <button className="closebutton"onClick={()=>this.props.clickHandler([])}>{"<"}</button>
         </div>

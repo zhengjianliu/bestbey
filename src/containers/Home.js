@@ -33,7 +33,15 @@ class Home extends React.Component {
   }
 
   renderCategoryIcon = () =>{
-    return this.state.categories.map(category =>
+    let newArray = []
+    this.state.categories.map(category =>
+      this.props.products.find( product => product.category === category? (!newArray.includes(category)?newArray.push(category):null):null)
+    )
+    return newArray
+  }
+
+  categoryIcon = ()=>{
+    return this.renderCategoryIcon().map(category =>
       <a href={`#${category}`}>
         <img className="iconImg" src={this.props.products.find( product => product.category === category).frontimg}></img>
         <p>{category.toUpperCase()}</p>
@@ -47,13 +55,13 @@ class Home extends React.Component {
 
         <div id="homepage" className={this.state.clicked? "slidetoleft": null}>
 
-          <div className="displaycategory">{this.renderCategoryIcon()}</div>
+          <div className="displaycategory">{this.categoryIcon()}</div>
 
           {this.props.products.length===0 ? <h1>loading...</h1> : this.renderCategory()}
         </div>
 
         <div id="secondpage" className={this.state.clicked?"slidetoright":null}>
-          {this.state.show.length === 0 ? null: <DetailPage cartChangeHandler={this.props.cartChangeHandler} product={this.state.show} clickHandler={this.clickHandler}/>}
+          {this.state.show.length === 0 ? null: <DetailPage user={this.props.user} cartChangeHandler={this.props.cartChangeHandler} product={this.state.show} clickHandler={this.clickHandler}/>}
         </div>
 
       </section>
