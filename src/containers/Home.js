@@ -1,5 +1,4 @@
 import React from 'react'
-import ProductCard from '../components/ProductCard'
 import DetailPage from './DetailPage'
 import ProductCategory from './ProductCategory'
 
@@ -42,8 +41,11 @@ class Home extends React.Component {
 
   categoryIcon = ()=>{
     return this.renderCategoryIcon().map(category =>
-      <a href={`#${category}`}>
-        <img className="iconImg" src={this.props.products.find( product => product.category === category).frontimg}></img>
+      <a key={category} href={`#${category}`}>
+        <img 
+          className="iconImg" 
+          alt=""
+          src={this.props.products.find( product => product.category === category).frontimg}></img>
         <p>{category.toUpperCase()}</p>
       </a>
     )

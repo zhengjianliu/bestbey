@@ -52,11 +52,21 @@ class NavBar extends React.Component {
             <div>
               <Search searchHandler={this.props.searchHandler} className="searchbar"/>
               {this.props.user.id === undefined?
-                <img src={logouticon} className="loginicon" onClick={this.popupClickHandler}/>
+                <img 
+                  alt="logout"
+                  src={logouticon} 
+                  className="loginicon" 
+                  onClick={this.popupClickHandler}/>
                 :
                 <>
-                  <img onClick={this.clickHandler} src={shoppingcart} className="loggedinicon" />
-                  <img src={loggedinicon} onClick={this.accountClickHandler} className="loggedinicon" />
+                  <img 
+                    onClick={this.clickHandler} 
+                    alt="shopping cart"
+                    src={shoppingcart} className="loggedinicon" />
+                  <img 
+                    alt="login button"
+                    src={loggedinicon} 
+                    onClick={this.accountClickHandler} className="loggedinicon" />
                 </>
               }
             </div>

@@ -3,7 +3,7 @@ import './App.css';
 import Home from './containers/Home'
 import NavBar from './containers/NavBar';
 import ConfirmationPage from './containers/ConfirmationPage'
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom';
 import CheckoutPage from './containers/CheckoutPage'
 import Signup from './containers/Signup'
 import {Redirect} from 'react-router-dom'
@@ -156,12 +156,12 @@ class App extends React.Component {
     }
   }
 
-
   render() {
-
     return (
       <Router>
+
         {this.checkinguser()}
+
         <div className="App">
           <NavBar
             cart={this.state.cart}
@@ -187,6 +187,8 @@ class App extends React.Component {
             <Route path="/confirmation" render={() =>
               <ConfirmationPage
                 currentOrder={this.state.currentOrder}
+                user={this.state.user}
+                handleUserLogin={this.handleUserLogin}
               />}
             />
         </div>

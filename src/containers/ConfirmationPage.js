@@ -1,5 +1,6 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+
 
 class ConfirmationPage extends React.Component {
 
@@ -25,25 +26,22 @@ class ConfirmationPage extends React.Component {
   }
 
   render() {
- // if(this.props.currentOrder.product_orders === null || undefined){
- //   <Redirect to="/"/>
- // }else{
-   return (
-     <div className="showpage" style={{paddingTop:"120px"}}>
-       { !this.props.currentOrder ? "loading..." :
-       <>
-         <h2>Your Confirmation Number is: {this.props.currentOrder.order.id}</h2>
-         <table className="confirmationpage">
-           <tr><td>Product</td><td>Product Id</td><td>Price</td><td>Quantity</td></tr>
-           {this.renderProductOrders()}
-         </table>
-         <h1>Total: ${this.getTotal()}</h1>
-         <p>Thanks for shopping with Bestbey</p>
-       </>
-       }
-     </div>
-   )
- }
-  // }
+    return (
+      <div className="showpage" style={{paddingTop:"120px"}}>
+        { !this.props.currentOrder ? "loading..." :
+        <>
+          <h2 className="confirmNum">Your Confirmation Number is: {this.props.currentOrder.order.id}</h2>
+          <table className="confirmationpage">
+            <tr><td>Product</td><td>Product Id</td><td>Price</td><td>Quantity</td></tr>
+            {this.renderProductOrders()}
+          </table>
+          <h3 className="total">Total: ${this.getTotal()}</h3>
+          <Link to="/"><h4>Continue Shopping</h4></Link>
+          <p>Thanks for shopping with Bestbey</p>
+        </>
+        }
+      </div>
+    )
+  }
 }
 export default ConfirmationPage
