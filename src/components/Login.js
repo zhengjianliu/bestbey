@@ -25,15 +25,11 @@ class Login extends Component{
     }else if (this.props.user.id !== undefined){
       this.props.popupClickHandler()
     }
-
-    if(this.props.user.id !== undefined){
-      this.props.popupClickHandler()
-    }
   }
 
 
   render(){
-    console.log(this.props.user.id)
+    console.log("user:",this.state.username)
     return(
       <div id="loginContainer" className={this.props.popup ? "active":null}>
         <div>
@@ -42,7 +38,7 @@ class Login extends Component{
             <input value={this.state.username} name="username" type="text" placeholder="username" onChange={this.handleChange} required></input>
             <br/>
             <input value={this.state.password} name="password" type="password" placeholder="password" onChange={this.handleChange} required></input>
-            {this.state.errormessage !== ""?<li className="errormessage">{this.state.errormessage}</li>:null}
+            {this.state.errormessage === ""?<li className="errormessage">{this.state.errormessage}</li>:null}
           <button type="submit">Login</button>
             <Link to="/signup"><button onClick={this.props.popupClickHandler}>Signup</button></Link>
           </form>

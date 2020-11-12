@@ -6,6 +6,7 @@ import ConfirmationPage from './containers/ConfirmationPage'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import CheckoutPage from './containers/CheckoutPage'
 import Signup from './containers/Signup'
+import {Redirect} from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -143,10 +144,18 @@ class App extends React.Component {
     .then(data => this.setState({currentOrder: data, cart: []}))
   }
 
+  checkinguser = () =>{
+    if(this.state.user.id === undefined){
+      return <Redirect to="/" />
+    }
+  }
+
 
   render() {
+
     return (
       <Router>
+        {this.checkinguser()}
         <div className="App">
           <NavBar
             cart={this.state.cart}
