@@ -4,6 +4,7 @@ class Login extends Component{
   state = {
     username: "",
     password: "",
+    errormessage:""
   }
 
   handleChange = (e) => {
@@ -13,23 +14,36 @@ class Login extends Component{
   handleSubmit =  (e) => {
     e.preventDefault()
     this.props.handleUserLogin(this.state)
-    this.setState({
-      username: "",
-      password: ""
-    })
-    this.props.popupClickHandler()
+
+    if(this.props.user.id === undefined){
+      console.log(this.state.errormessage)
+      this.setState({errormessage:"Please check your password or username"})
+      this.setState({
+        username: "",
+        password: ""
+      })
+    }else if (this.props.user.id !== undefined){
+      this.props.popupClickHandler()
+    }
+
+    if(this.props.user.id !== undefined){
+      this.props.popupClickHandler()
+    }
   }
 
+
   render(){
+    console.log(this.props.user.id)
     return(
-      <div id="loginContainer" className={this.props.popup? "active":null}>
+      <div id="loginContainer" className={this.props.popup ? "active":null}>
         <div>
           <h1>Login</h1>
           <form className="loginform" onSubmit={this.handleSubmit}>
             <input value={this.state.username} name="username" type="text" placeholder="username" onChange={this.handleChange} required></input>
             <br/>
             <input value={this.state.password} name="password" type="password" placeholder="password" onChange={this.handleChange} required></input>
-            <button type="submit">Login</button>
+            {this.state.errormessage !== ""?<li className="errormessage">{this.state.errormessage}</li>:null}
+          <button type="submit">Login</button>
             <Link to="/signup"><button onClick={this.props.popupClickHandler}>Signup</button></Link>
           </form>
           <button className="closebutton" onClick={this.props.popupClickHandler}>X</button>

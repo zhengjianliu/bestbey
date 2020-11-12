@@ -28,7 +28,8 @@ class SlidePanel extends React.Component {
     if(this.props.clicking === "cart"){
       return(
         <div style={{marginTop:"80px"}}>
-          <h2>Shopping Cart</h2>
+          <h3>Shopping Cart</h3>
+          <hr/>
           <div className="cart">{this.renderCart()}</div>
           {this.getTotalAmount() === parseFloat(0).toFixed(2) ? null :
           <Link to="/checkout">

@@ -73,7 +73,7 @@ export default class DetailPage extends React.Component{
         </div>
         : null}
         <br/>
-        <button className="closebutton"onClick={()=>this.props.clickHandler([])}>{"<"}</button>
+        <button className="closebutton" onClick={()=>this.props.clickHandler([])}>{"<"}</button>
         </div>
       </div>
     )

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link, Redirect} from 'react-router-dom'
 
 class Signup extends React.Component {
   state = {
@@ -14,7 +15,6 @@ class Signup extends React.Component {
   }
 
   submitHandler = e =>{
-    console.log("submitting")
     e.preventDefault()
     this.props.signupHandler(this.state)
     this.setState({
@@ -26,6 +26,10 @@ class Signup extends React.Component {
   }
 
     render(){
+
+      if(this.props.user.id !== undefined){
+        return <Redirect to="/" />
+      }else{
         return(
             <div style={{paddingTop:"60px"}}>
               <div className="signupleftside">
@@ -35,13 +39,13 @@ class Signup extends React.Component {
                 <h1>Sign Up</h1>
                 <form className="signupform" onSubmit={this.submitHandler}>
                 <hr className="hrline"/>
-                  <input value={this.state.firstname} type="text" placeholder="First Name" name="firstname" onChange={this.changeHandler}></input>
+                  <input value={this.state.firstname} type="text" placeholder="First Name" name="firstname" onChange={this.changeHandler} required></input>
                   <br/>
-                  <input value={this.state.lastname}type="text" placeholder="Last Name" name="lastname" onChange={this.changeHandler}></input>
+                  <input value={this.state.lastname}type="text" placeholder="Last Name" name="lastname" onChange={this.changeHandler} required></input>
                   <br/>
-                  <input value={this.state.username} type="text" placeholder="Username" name="username" onChange={this.changeHandler}></input>
+                  <input value={this.state.username} type="text" placeholder="Username" name="username" onChange={this.changeHandler} required></input>
                   <br/>
-                  <input value={this.state.password} type="password" placeholder="Password" name="password" onChange={this.changeHandler}></input>
+                  <input value={this.state.password} type="password" placeholder="Password" name="password" onChange={this.changeHandler} required></input>
                   <br/>
                   <button type="submit">Register</button>
                 </form>
@@ -49,6 +53,7 @@ class Signup extends React.Component {
 
             </div>
         )
+    }
     }
 }
 export default Signup

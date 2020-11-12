@@ -56,6 +56,9 @@ class App extends React.Component {
     }
     fetch("http://localhost:3000/users",options)
     .then(response => response.json())
+    .then(user => {
+      this.setState({user:user})
+    })
   }
 
   filteredContent = () =>{
@@ -140,6 +143,7 @@ class App extends React.Component {
     .then(data => this.setState({currentOrder: data, cart: []}))
   }
 
+
   render() {
     return (
       <Router>
@@ -156,7 +160,7 @@ class App extends React.Component {
             />
           <Route exact path="/" render={() =>
             <Home products={this.filteredContent()} user={this.state.user}cartChangeHandler={this.cartChangeHandler}/>}/>
-            <Route exact path='/signup' render={()=><Signup signupHandler={this.signupHandler}/>}/>
+            <Route exact path='/signup' render={()=><Signup user={this.state.user} signupHandler={this.signupHandler}/>}/>
             <Route path="/checkout" render={() =>
               <CheckoutPage
                 appState={this.state}

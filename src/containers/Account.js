@@ -13,9 +13,11 @@ class Account extends React.Component {
       let {firstname, lastname} = this.props.user
         return(
             <div className="cart">
-              <h2>Welcome Back</h2>
-              <h3>{firstname} {lastname}</h3>
+              <h3>Welcome Back</h3>
+              <h6>{firstname.toUpperCase()} {lastname.toUpperCase()}</h6>
+              <hr/>
               <h4 className="orderHistory">Order History</h4>
+              <br/>
               <ul className="orderHistoryList" >
                 {this.renderReceipts()}
               </ul>
