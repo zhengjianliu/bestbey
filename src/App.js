@@ -37,7 +37,9 @@ class App extends React.Component {
       user.username === userObj.username &&
       user.password === userObj.password
       )
-    if (newUser) {this.setState({user: newUser})}
+    if (newUser) {
+      this.setState({user: newUser})
+    }
   }
 
   signupHandler = newUserData =>{
@@ -60,6 +62,10 @@ class App extends React.Component {
     .then(user => {
       this.setState({user:user})
     })
+  }
+
+  popupClickHandler = () =>{
+    this.setState({popup: !this.state.popup})
   }
 
   filteredContent = () =>{
