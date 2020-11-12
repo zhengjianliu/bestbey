@@ -5,7 +5,17 @@ class Search extends Component{
   render(){
     return(
       <form onSubmit={e => { e.preventDefault(); }}>
-        <input type="text" className="searchbar" name="search" placeholder="Search" onChange={this.props.searchHandler}/>
+        <label 
+          for="s" 
+          className="sr-only"
+        >Search Term</label>
+        <input
+          id="s" 
+          type="text" 
+          className="searchbar" 
+          name="search" 
+          placeholder="Search" 
+          onChange={this.props.searchHandler}/>
       </form>
     )
   }

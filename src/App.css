@@ -91,8 +91,17 @@ body {
   letter-spacing: 2px;
   padding-left: 10px;
   font-size: 12pt;
+  text-align: center;
 }
 
+.sr-only {
+  position: absolute;
+  left: -100000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
 button{
   cursor: pointer;
@@ -292,7 +301,13 @@ a:hover{
   transition: 0.5s;
 }
 
-.cartcontainer div button:hover{
+.checkoutDelete{
+  transition: 0.5s;
+  background: rgb(250, 55, 55);
+  opacity: 0.6;
+}
+
+.cartcontainer div button:hover, .checkoutDelete:hover{
   opacity: 1;
   transform: scale(1.04);
 }
@@ -303,6 +318,11 @@ a:hover{
   margin-right: 10px;
 }
 
+.cartQty{
+  max-width: 50px;
+  text-align: center;
+  margin: 10px;
+}
 
 #logoutbutton{
   bottom:0;
@@ -664,16 +684,30 @@ table tr td img{
 
 .confirmationpage tr:first-child{
   font-weight: 700;
-  font-size: 17pt;
+  font-size: 16pt;
+  color: #404040;
 }
 
 .confirmationpage tr td {
-  width: 25%;
+  width: 15%;
   text-align: center;
 }
 
+.confirmationpage td:first-child{
+  width: 45%;
+}
 
+.confirmNum {
+  border-bottom: 2px solid #a0a0a0;
+  padding-bottom: 10px;
+  color: #a00000;
+}
 
+.total {
+  margin: 15px 0;
+  padding: 10px;
+  border-top: 2px solid #404040;
+}
 
 
 /*mobile view section*/

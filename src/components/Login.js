@@ -16,7 +16,6 @@ class Login extends Component{
     this.props.handleUserLogin(this.state)
 
     if(this.props.user.id === undefined){
-      console.log(this.state.errormessage)
       this.setState({errormessage:"Please check your password or username"})
       this.setState({
         username: "",
@@ -33,7 +32,6 @@ class Login extends Component{
 
 
   render(){
-    console.log(this.props.user.id)
     return(
       <div id="loginContainer" className={this.props.popup ? "active":null}>
         <div>

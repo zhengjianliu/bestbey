@@ -29,12 +29,12 @@ class ConfirmationPage extends React.Component {
       <div className="showpage" style={{paddingTop:"120px"}}>
         { !this.props.currentOrder ? "loading..." :
         <>
-          <h2>Your Confirmation Number is: {this.props.currentOrder.order.id}</h2>
+          <h2 className="confirmNum">Your Confirmation Number is: {this.props.currentOrder.order.id}</h2>
           <table className="confirmationpage">
             <tr><td>Product</td><td>Product Id</td><td>Price</td><td>Quantity</td></tr>
             {this.renderProductOrders()}
           </table>
-          <h1>Total: ${this.getTotal()}</h1>
+          <h3 className="total">Total: ${this.getTotal()}</h3>
           <p>Thanks for shopping with Bestbey</p>
         </>
         }
