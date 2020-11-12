@@ -13,15 +13,20 @@ const CartItem = (props) => {
     return(
         props.checkout ?  
             <tr>
-                <td><img src={props.item.frontimg}/></td>
+                <td><img alt="" src={props.item.frontimg}/></td>
                 <td><h5>{props.item.sku.name.toUpperCase()}</h5></td>
                 <td><label>Quantity</label>
                 <input 
+                  className="cartQty"
                   type="number" 
                   value={props.item.quantity} 
                   onChange={changeQuantity}
                 ></input></td>
-                <td><button onClick={handleDeleteFromCart} >Delete</button></td>
+                <td>
+                  <button 
+                  className="checkoutDelete"
+                  onClick={handleDeleteFromCart} 
+                  >Delete</button></td>
             </tr>
         :
         <div className="cartcontainer">
@@ -33,6 +38,7 @@ const CartItem = (props) => {
           <h6>{props.item.sku.name.toUpperCase()}</h6>
           <label>Quantity</label>
           <input 
+            className="cartQty"
             type="number" 
             value={props.item.quantity} 
             onChange={changeQuantity}

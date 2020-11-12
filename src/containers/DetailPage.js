@@ -56,7 +56,7 @@ export default class DetailPage extends React.Component{
         <div className="rightsidepanel">
         <h2>{this.props.product.name.toUpperCase()} | {this.props.product.brand.toUpperCase()}</h2>
         <hr className="hrline"/>
-        <h3>Options</h3>
+        <h4>Options</h4>
         <form>
           <b>{this.props.product.product_options[0].name.toUpperCase()}:</b>
           <select onChange={this.setSku}>
@@ -67,8 +67,12 @@ export default class DetailPage extends React.Component{
         <h3>Price: ${this.state.sku.price}</h3>
         {this.props.user.length !==0 ?
         <div>
-        <p>Quantity:</p>
-        <input title="quantity" type="number" value={this.state.quantity} onChange={this.changeQuantity} min="1" max="10" className="quantity"></input><br/>
+        <label className="detailQty" for="detailQty">Quantity</label>
+        <input 
+          id="detailQty"
+          title="quantity" 
+          type="number" 
+          value={this.state.quantity} onChange={this.changeQuantity} min="1" max="10" className="quantity"></input><br/>
         <button className="cardbuttons addbutton" onClick={()=>this.props.cartChangeHandler(this.state)}>Add to Cart</button>
         </div>
         : null}

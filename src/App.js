@@ -3,7 +3,7 @@ import './App.css';
 import Home from './containers/Home'
 import NavBar from './containers/NavBar';
 import ConfirmationPage from './containers/ConfirmationPage'
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom';
 import CheckoutPage from './containers/CheckoutPage'
 import Signup from './containers/Signup'
 
@@ -143,10 +143,17 @@ class App extends React.Component {
     .then(data => this.setState({currentOrder: data, cart: []}))
   }
 
+  checkingUser=()=>{
+    if(this.state.user.id === undefined){
+      return <Redirect to="/" />
+    }
+  }
+
 
   render() {
     return (
       <Router>
+        {this.checkingUser()}
         <div className="App">
           <NavBar
             cart={this.state.cart}
@@ -172,6 +179,8 @@ class App extends React.Component {
             <Route path="/confirmation" render={() =>
               <ConfirmationPage
                 currentOrder={this.state.currentOrder}
+                user={this.state.user}
+                handleUserLogin={this.handleUserLogin}
               />}
             />
         </div>
