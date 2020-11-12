@@ -13,7 +13,6 @@
 html{
   scroll-behavior: smooth;
 }
-
 body {
   text-align: center;
 }
@@ -55,6 +54,7 @@ body {
   font-weight: 700;
   font-size: 15pt;
 }
+
 .category{
   width: 100%;
   float: left;
@@ -62,12 +62,13 @@ body {
 
 .category h1{
   text-align: left;
+  padding-top: 100px;
+  height: 150px;
   padding-left: 30px;
   font-size: 20pt;
   font-weight: 700;
   letter-spacing: 3px;
   cursor: pointer;
-  margin-top: 40px;
 }
 
 
@@ -99,17 +100,22 @@ button{
 
 #homepage{
   position: absolute;
-  width: 100%;
+  width: 96%;
+  margin-left: 2%;
   margin-top: 70px;
   height: 200vh;
   opacity: 1;
   z-index: 10;
-  transition: 0.5s;
+  transition: .5s;
 }
 
 #homepage.slidetoleft{
   transform: translateX(-100%) scaleX(0);
   opacity: 0;
+}
+
+.errormessage{
+  color: red;
 }
 
 
@@ -122,7 +128,7 @@ button{
   z-index: 0;
   opacity: 0;
   transform: translateX(100%) scaleX(0);
-  transition: 0.5s;
+  transition:.5s;
 }
 
 #secondpage.slidetoright{
@@ -132,7 +138,8 @@ button{
 
 .leftsidepenl{
   margin-top: 150px;
-  width: 40%;
+  width: 38%;
+  margin-left: 2%;
   height: 500px;
   float: left;
   display: flex;
@@ -141,12 +148,12 @@ button{
 }
 
 .carouselimage{
-  max-width: 500px;
+  max-width: 100%;
   height: 600px;
 }
 
 .rightsidepanel{
-  margin-top: 150px;
+  margin-top: 50px;
   float: right;
   padding: 3%;
   width: 60%;
@@ -633,17 +640,41 @@ table tr td img{
 }
 
 .orderHistoryList {
-  padding-left: 0;
+  padding-left: 10px;
+  padding-right: 5px;
+  font-size: 10pt;
+  text-align: left;
 }
 
-.receiptItem{
-
+.orderbox{
+  padding: 10px 10px;
+  transition: 0.5s;
 }
-
-.receiptItem:hover {
+.orderbox:hover{
+  box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-
 }
+
+/*confirmation page*/
+
+.confirmationpage{
+  width: 80%;
+  margin-left: 10%;
+}
+
+.confirmationpage tr:first-child{
+  font-weight: 700;
+  font-size: 17pt;
+}
+
+.confirmationpage tr td {
+  width: 25%;
+  text-align: center;
+}
+
+
+
+
 
 /*mobile view section*/
 @media (max-width: 1800px){
@@ -660,7 +691,9 @@ table tr td img{
   }
 
   .leftsidepenl{
-    width: 100%;
+    margin-top: 50px;
+    width: 90%;
+    margin-left: 5%;
     height: 500px;
     display: flex;
     justify-content: center;
@@ -668,12 +701,11 @@ table tr td img{
   }
 
   .carouselimage{
-    max-width: 1200px;
-    height: 600px;
+    max-width: 100%;
+    height: 400px;
   }
 
   .rightsidepanel{
-    margin-top: 80px;
     padding: 5%;
     justify-content: center;
     align-items: center;

@@ -43,6 +43,7 @@ class NavBar extends React.Component {
     this.setState({clickCart: !this.state.clickCart, clicking:""})
   }
 
+
     render(){
       return(
         <div>
@@ -74,6 +75,7 @@ class NavBar extends React.Component {
             popup={this.state.popup}
             popupClickHandler={this.popupClickHandler}
             handleUserLogin={this.props.handleUserLogin}
+            user={this.props.user}
             />
         </div>
       )

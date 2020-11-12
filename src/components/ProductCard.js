@@ -12,7 +12,7 @@ class ProductCard extends Component{
           />
         </div>
         <h4>{this.props.product.name.toUpperCase()} | {this.props.product.brand}</h4>
-        <h5>Star: {this.props.product.rating}</h5>
+        <h5>Rating: {this.props.product.rating} / 5.0</h5>
       </div>
     )
   }
