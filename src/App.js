@@ -6,6 +6,7 @@ import ConfirmationPage from './containers/ConfirmationPage'
 import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom';
 import CheckoutPage from './containers/CheckoutPage'
 import Signup from './containers/Signup'
+import {Redirect} from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -36,7 +37,9 @@ class App extends React.Component {
       user.username === userObj.username &&
       user.password === userObj.password
       )
-    if (newUser) {this.setState({user: newUser})}
+    if (newUser) {
+      this.setState({user: newUser})
+    }
   }
 
   signupHandler = newUserData =>{
@@ -59,6 +62,10 @@ class App extends React.Component {
     .then(user => {
       this.setState({user:user})
     })
+  }
+
+  popupClickHandler = () =>{
+    this.setState({popup: !this.state.popup})
   }
 
   filteredContent = () =>{
@@ -143,17 +150,18 @@ class App extends React.Component {
     .then(data => this.setState({currentOrder: data, cart: []}))
   }
 
-  checkingUser=()=>{
+  checkinguser = () =>{
     if(this.state.user.id === undefined){
       return <Redirect to="/" />
     }
   }
 
-
   render() {
     return (
       <Router>
-        {this.checkingUser()}
+
+        {this.checkinguser()}
+
         <div className="App">
           <NavBar
             cart={this.state.cart}

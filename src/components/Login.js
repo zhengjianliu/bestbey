@@ -21,13 +21,9 @@ class Login extends Component{
         username: "",
         password: ""
       })
-    }else if (this.props.user.id !== undefined){
-      this.props.popupClickHandler()
     }
+    this.props.popupClickHandler()
 
-    if(this.props.user.id !== undefined){
-      this.props.popupClickHandler()
-    }
   }
 
 
@@ -40,7 +36,6 @@ class Login extends Component{
             <input value={this.state.username} name="username" type="text" placeholder="username" onChange={this.handleChange} required></input>
             <br/>
             <input value={this.state.password} name="password" type="password" placeholder="password" onChange={this.handleChange} required></input>
-            {this.state.errormessage !== ""?<li className="errormessage">{this.state.errormessage}</li>:null}
           <button type="submit">Login</button>
             <Link to="/signup"><button onClick={this.props.popupClickHandler}>Signup</button></Link>
           </form>

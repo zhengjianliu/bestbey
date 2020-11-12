@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
+
 class ConfirmationPage extends React.Component {
 
   renderProductOrders = () => {
@@ -24,17 +25,7 @@ class ConfirmationPage extends React.Component {
     return parseInt(total).toFixed(2)
   }
 
-  // componentDidMount(){
-  //   let userObj = {
-  //     username: this.props.user.username,
-  //     password: this.props.user.password
-  //   }
-  //   setTimeout(this.props.handleUserLogin(userObj), 1000)
-    
-  // }
-
   render() {
-
     return (
       <div className="showpage" style={{paddingTop:"120px"}}>
         { !this.props.currentOrder ? "loading..." :
