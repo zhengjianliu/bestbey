@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class ConfirmationPage extends React.Component {
 
@@ -23,6 +24,15 @@ class ConfirmationPage extends React.Component {
     return parseInt(total).toFixed(2)
   }
 
+  // componentDidMount(){
+  //   let userObj = {
+  //     username: this.props.user.username,
+  //     password: this.props.user.password
+  //   }
+  //   setTimeout(this.props.handleUserLogin(userObj), 1000)
+    
+  // }
+
   render() {
 
     return (
@@ -35,6 +45,7 @@ class ConfirmationPage extends React.Component {
             {this.renderProductOrders()}
           </table>
           <h3 className="total">Total: ${this.getTotal()}</h3>
+          <Link to="/"><h4>Continue Shopping</h4></Link>
           <p>Thanks for shopping with Bestbey</p>
         </>
         }

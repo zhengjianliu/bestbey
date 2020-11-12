@@ -162,7 +162,7 @@ button{
 }
 
 .rightsidepanel{
-  margin-top: 50px;
+  margin-top: 25px;
   float: right;
   padding: 3%;
   width: 60%;
@@ -170,12 +170,19 @@ button{
 
 select{
   border:none;
-  width: 100px;
+  min-width: 100px;
   font-size: 12pt;
   font-weight: 600;
   margin-left: 20px;
   border-bottom: 2px solid black;
+  margin: 10px 5px;
 }
+
+.detailQty, #detailQty {
+  margin: 12px;
+  text-align: center;
+}
+
 
 #navbar{
   top: 0;
@@ -375,11 +382,14 @@ a:hover{
 
 .productcard h4{
   padding: 15px;
-  font-size: 11pt;
+  font-size: 13pt;
 }
 .productcard h5{
-  font-size: 15pt;
+  font-size: 12pt;
   font-weight: 700;
+  letter-spacing: 2px;
+  color: #606060;
+  padding-top: 15px;
 }
 
 .cardbuttons{

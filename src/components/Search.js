@@ -6,7 +6,7 @@ class Search extends Component{
     return(
       <form onSubmit={e => { e.preventDefault(); }}>
         <label 
-          for="s" 
+          htmlFor="s" 
           className="sr-only"
         >Search Term</label>
         <input
