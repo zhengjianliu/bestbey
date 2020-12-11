@@ -1,6 +1,6 @@
 import React from 'react'
 import CartItem from '../components/CartItem'
-import {Link, Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import emptycart from '../images/emptycart.png'
 
 
