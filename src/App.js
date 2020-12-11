@@ -5,9 +5,7 @@ import NavBar from './containers/NavBar';
 import ConfirmationPage from './containers/ConfirmationPage'
 import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom';
 import CheckoutPage from './containers/CheckoutPage'
-import Signup from './containers/Signup'
-import {Redirect} from 'react-router-dom'
-
+import Signup from './containers/Signup';
 
 class App extends React.Component {
 
@@ -20,14 +18,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/products")
+    fetch("https://bestbey-api.herokuapp.com/products")
     .then(response => response.json())
     .then(data => this.setState({products: data}))
     .catch(e => console.error(e))
   }
 
   handleUserLogin = (userObj) => {
-    fetch("http://localhost:3000/users")
+    fetch("https://bestbey-api.herokuapp.com/users")
     .then(response => response.json())
     .then(users => this.findUser(users, userObj))
   }
@@ -57,7 +55,7 @@ class App extends React.Component {
         password: newUserData.password
       })
     }
-    fetch("http://localhost:3000/users",options)
+    fetch("https://bestbey-api.herokuapp.com/users",options)
     .then(response => response.json())
     .then(user => {
       this.setState({user:user})
@@ -145,7 +143,7 @@ class App extends React.Component {
         user_id: this.state.user.id
       })
     }
-    fetch("http://localhost:3000/orders", options)
+    fetch("https://bestbey-api.herokuapp.com/orders", options)
     .then(response => response.json())
     .then(data => this.setState({currentOrder: data, cart: []}))
   }
