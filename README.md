@@ -8,8 +8,8 @@
 
 
 > A React / Redux / Ruby on Rails eCommerce store that brings you superior quality in electronics.
-<br/>
-Built with a Ruby on Rails API backend, and a React front-end (this file) for Flatiron School Software Engineering Program
+
+###Built with a Ruby on Rails API backend, and a React front-end (this file) for Flatiron School Software Engineering Program
 
 
 ### 🏠 [LiveDemo](https://bestbey.netlify.app/) | [Frontend](https://github.com/zhengjianliu/bestbey) | [Backend](https://github.com/zhengjianliu/bestbey-back)
