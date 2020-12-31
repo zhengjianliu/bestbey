@@ -1,10 +1,4 @@
-
-
-
-
-
-
-<h1 align="center" color="lightgrey">Welcome to Best Bey</h1>
+<h1 align="center" color="lightgrey">👋Welcome to Best Bey</h1>
 
 
 > A React / Redux / Ruby on Rails eCommerce store that brings you superior quality in electronics.
