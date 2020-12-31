@@ -1,29 +1,34 @@
-Here is BestBey: https://bestbey.netlify.app
 
-# Bestbey Frontend
 
-Bestbey is an eCommerce store that brings you superior quality in electronics.
 
+
+
+
+<h1 align="center" color="lightgrey">Welcome to Best Bey</h1>
+
+
+> A React / Redux / Ruby on Rails eCommerce store that brings you superior quality in electronics.
+<br/>
 Built with a Ruby on Rails API backend, and a React front-end (this file) for Flatiron School Software Engineering Program
 
 
-## Installation
+### 🏠 [LiveDemo](https://bestbey.netlify.app/) | [Frontend](https://github.com/zhengjianliu/bestbey) | [Backend](https://github.com/zhengjianliu/bestbey-back)
 
-Once you fork and clone this repo
 
-Simply run npm install to install bestbey's frontend.
 
-```bash
-npm install
-```
+## Author
 
-## Usage
+👤 **ZHENGJIAN(JAY) LIU**
 
-Once your Rails server is running
+-   Github: [@ZHENGJIANLIU](https://github.com/zhengjianliu)
+-   Linkedin [@Linkedin](https://www.linkedin.com/in/zhengjian-jay-liu-33776553/)
+-   Website [@Website](https://www.zhengjianliu.com)
 
-Start up your react app and enjoy
+👤 **JD Brewer-Hofmann**
 
-```bash
-npm start
-```
+
+
+## Show your support
+
+Give a ⭐️ if you like this project!
 
