@@ -18,6 +18,10 @@
 
 👤 **JD Brewer-Hofmann**
 
+-   Github: [@jdhofmann](https://github.com/JDHofmann)
+-   Linkedin [@Linkedin](https://www.linkedin.com/in/jdhofmann/)
+-   Website [@Website](https://jdbh.dev/)
+
 
 
 ## Show your support
